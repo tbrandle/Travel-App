@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 // import { render } from 'react-dom';
 import ReactDOM from 'react-dom';
 
@@ -9,11 +9,13 @@ import { routerReducer, routerMiddleware } from 'react-router-redux';
 import { Provider } from 'react-redux';
 
  /******* router *********/
-import { ConnectedRouter } from 'react-router-dom';
+import { ConnectedRouter } from 'react-router-redux';
 import { Route } from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory';
 
 /******* files *********/
+import * as reducers from './reducers';
+
 import AppContainer from './App/AppContainer.js';
 import './index.css';
 
@@ -22,6 +24,7 @@ const middleWare = routerMiddleware(history)
 const devTools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
 
 const root = combineReducers({
+  reducers,
   router: routerReducer
 })
 

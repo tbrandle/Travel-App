@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-// import Login from '../Login/Login'
+import LoginContainer from '../Login/LoginContainer'
 
 export default class App extends Component {
 
@@ -8,13 +8,17 @@ export default class App extends Component {
   // once logged in, if user interests is empty, render interests component
   // if there is a user with interests, render home page
 
+  signIn(){
+
+  }
+
   render() {
     console.log('inside App');
 
     return (
       <div className="App">
 
-        working
+        <LoginContainer />
       </div>
     );
   }
