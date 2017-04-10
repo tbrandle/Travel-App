@@ -13,15 +13,17 @@ export default class Login extends Component {
 
   render(){
     return (
-    <div>
-      <input type="text"
-             value={ this.state.email }
-             onChange={(e) =>  this.setState({ email: e.target.value }) } />
-      <input type="password"
-             value={ this.state.password }
-             onChange={(e) =>  this.setState({ password: e.target.value }) } />
-           <button onClick={ () => this.props.logIn(this.state)}>Submit</button>
-    </div>
+      <div>
+        <input type="text"
+               value={ this.state.email }
+               onChange={(e) =>  this.setState({ email: e.target.value }) }
+               />
+        <input type="password"
+               value={ this.state.password }
+               onChange={(e) =>  this.setState({ password: e.target.value }) }
+               />
+        <button onClick={ () => this.props.logIn(this.state)}>Submit</button>
+      </div>
     )
   }
 

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
 import './App.css';
 import LoginContainer from '../Login/LoginContainer'
 
@@ -18,7 +19,7 @@ export default class App extends Component {
     return (
       <div className="App">
 
-        <LoginContainer />
+        <Route path='/login' component={ LoginContainer } />
       </div>
     );
   }
