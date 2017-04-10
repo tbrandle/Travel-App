@@ -1,9 +1,42 @@
 import React from 'react';
+// import { render } from 'react-dom';
 import ReactDOM from 'react-dom';
-import App from './App';
+
+
+/******** redux ********/
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { routerReducer, routerMiddleware } from 'react-router-redux';
+import { Provider } from 'react-redux';
+
+ /******* router *********/
+import { ConnectedRouter } from 'react-router-redux';
+import { Route } from 'react-router-dom';
+import createHistory from 'history/createBrowserHistory';
+
+/******* files *********/
+import * as reducers from './reducers';
+
+import AppContainer from './App/AppContainer.js';
 import './index.css';
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('root')
-);
+const history = createHistory();
+const middleWare = routerMiddleware(history)
+const devTools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
+
+const root = combineReducers({
+  reducers,
+  router: routerReducer
+})
+
+const store = createStore(root, devTools, applyMiddleware(middleWare))
+// console.log('inside router');
+
+const router = (
+  <Provider store={ store }>
+    <ConnectedRouter history={ history } >
+      <Route path='/' component={ AppContainer } />
+    </ConnectedRouter>
+  </Provider>
+)
+
+ReactDOM.render(router, document.getElementById('root'));
