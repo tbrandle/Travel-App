@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Link }             from 'react-router-dom';
+
 
 export default class Login extends Component {
 
@@ -9,6 +11,15 @@ export default class Login extends Component {
       password: '',
       error: ''
     }
+  }
+
+  signIn () {
+    this.props.logIn(this.state)
+    this.setState({
+      email: '',
+      password: '',
+      error: ''
+    })
   }
 
   render(){
@@ -22,7 +33,9 @@ export default class Login extends Component {
                value={ this.state.password }
                onChange={(e) =>  this.setState({ password: e.target.value }) }
                />
-        <button onClick={ () => this.props.logIn(this.state)}>Submit</button>
+        <button onClick={ () => this.signIn() }>Submit</button>
+        <p>No account? <Link to='/register'>Register here.</Link></p>
+
       </div>
     )
   }
