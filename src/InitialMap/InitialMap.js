@@ -1,34 +1,28 @@
 import React from 'react';
-import { withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react-google-maps';
+import { withGoogleMap, GoogleMap, Marker, InfoWindow, SearchBox } from 'react-google-maps';
 import './GoogleMap.css';
 
-// const initMap = () => {
-//   var uluru = {
-//     lat:39.73915 ,
-//     lng: -104.9847
-//   };
-//   var map = new google.maps.Map(document.getElementById('map'), {
-//     zoom: 10,
-//     center: uluru
-//   });
-//   var marker = new google.maps.Marker({
-//     position: uluru,
-//     map: map
-//   });
-// }
 
 const InitialMap = withGoogleMap(props => {
+  console.log(Marker);
   return (
     <GoogleMap
-      ref={props.onMapLoad}
+      ref={ props.onMapLoad }
       defaultZoom={14}
       defaultCenter={{ lat:39.73915 , lng: -104.9847 }}>
+      <SearchBox
+        inputPlaceholder="Customized your placeholder"
+        inputStyle={INPUT_STYLE}
+      />
+      {props.markers.map((marker, index) => (
+        <Marker
+          {...marker}
+          onRightClick={() => props.onMarkerRightClick(index)}
+        />
+      ))}
+
     </GoogleMap>
   )
 })
-
-// <Marker
-//   position={this.props.marker.position}
-//   onClick={() => props.onMarkerClick(marker)} />
 
 export default InitialMap;

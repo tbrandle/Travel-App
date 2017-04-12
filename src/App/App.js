@@ -6,6 +6,7 @@ import './App.css';
 import LoginContainer from '../Login/LoginContainer';
 import NewUserContainer from '../NewUser/NewUserContainer';
 import MapContainer from '../InitialMap/MapContainer';
+import AddItinerary from '../AddItinerary/AddItinerary';
 // import GoogleMapReact from 'google-map-react';
 
 export default class App extends Component {
@@ -20,7 +21,8 @@ export default class App extends Component {
         <header>
           <Link to='/'><h1>Travel App</h1></Link>
         </header>
-        <MapContainer />
+
+        <Route path='/itinerary' component={ AddItinerary } />
         <Route path='/login' component={ LoginContainer } />
         <Route path='/register' component={ NewUserContainer } />
 

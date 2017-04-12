@@ -1,6 +1,7 @@
 import React from 'react';
-// import { render } from 'react-dom';
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
+// import ReactDOM from 'react-dom';
+import * as firebase from 'firebase';
 
 
 /******** redux ********/
@@ -18,6 +19,17 @@ import * as reducers from './reducers';
 
 import AppContainer from './App/AppContainer.js';
 import './index.css';
+
+const config = {
+    apiKey: "AIzaSyA-BIWbCv_RZswQ2mPpXb1iGYUQLMunS1I",
+    authDomain: "travel-app-sch-1491500719051.firebaseapp.com",
+    databaseURL: "https://travel-app-sch-1491500719051.firebaseio.com",
+    projectId: "travel-app---sch-1491500719051",
+    storageBucket: "travel-app---sch-1491500719051.appspot.com",
+    messagingSenderId: "722898624860"
+  };
+
+firebase.initializeApp(config)
 
 const history = createHistory();
 const middleWare = routerMiddleware(history)
@@ -39,4 +51,4 @@ const router = (
   </Provider>
 )
 
-ReactDOM.render(router, document.getElementById('root'));
+render(router, document.getElementById('root'));
