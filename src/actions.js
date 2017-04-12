@@ -4,3 +4,10 @@ export const logIn = (user) => {
     user
   }
 }
+
+export const addItinerary = (itinerary) => {
+  return {
+    type: 'ADD_ITINERARY',
+    itinerary
+  }
+}

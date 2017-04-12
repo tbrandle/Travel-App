@@ -13,16 +13,22 @@ export const user = (state = initialUserState, action) => {
   }
 }
 
-
-
-
-const marker = [{
-  position: {
-    lat: 39.753222,
-    lng: -104.987797
+export const itinerary = (state = [], action) => {
+  switch(action.type){
+    case 'ADD_ITINERARY':
+      return [...state, action.itinerary];
+    default:
+      return state;
   }
-}]
-
-export const markers = () => {
-  return marker
 }
+
+
+
+
+
+// const marker = [{
+//   position: {
+//     lat: 39.753222,
+//     lng: -104.987797
+//   }
+// }]

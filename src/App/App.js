@@ -6,7 +6,7 @@ import './App.css';
 import LoginContainer from '../Login/LoginContainer';
 import NewUserContainer from '../NewUser/NewUserContainer';
 import MapWrapper from '../InitialMap/MapWrapper';
-import AddItinerary from '../AddItinerary/AddItinerary';
+import AddItineraryContainer from '../AddItinerary/AddItineraryContainer';
 import NewDestination from '../NewDestination/NewDestination'
 
 // import GoogleMapReact from 'google-map-react';
@@ -24,7 +24,7 @@ export default class App extends Component {
           <Link to='/'><h1>Travel App</h1></Link>
         </header>
 
-        <Route path='/itinerary' component={ AddItinerary } />
+        <Route path='/itinerary' component={ AddItineraryContainer } />
         <Route path='/login' component={ LoginContainer } />
         <Route path='/register' component={ NewUserContainer } />
 

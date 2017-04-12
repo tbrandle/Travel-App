@@ -10,13 +10,6 @@ const InitialMap = withGoogleMap(props => {
       defaultZoom={14}
       defaultCenter={{ lat:39.73915 , lng: -104.9847 }}>
 
-      {props.markers.map((marker, index) => (
-        <Marker
-          {...marker}
-          key={index}
-          />
-      ))}
-
     </GoogleMap>
   )
 })
@@ -30,3 +23,13 @@ export default InitialMap;
 //   inputPlaceholder="Customized your placeholder"
 //   inputStyle={{width: "40px", height: "10px"}}
 //   />
+
+
+
+// 
+// {props.itinerary.markers.map((marker, index) => (
+//   <Marker
+//     {...marker}
+//     key={index}
+//     />
+// ))}

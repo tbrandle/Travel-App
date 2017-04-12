@@ -8,33 +8,42 @@ export default class AddItinerary extends Component{
   constructor(){
     super()
     this.state={
-      id:'',
-      title:'',
-      description:'',
-      destinations: [],
-      markers:[],
-
+      itinerary: {
+        id: Date.now(),
+        title:'',
+        description:'',
+        destinations: [],
+        markers:[{
+          position: {
+            lat: 39.753222,
+            lng: -104.987797
+          }
+        }]
+      },
       place:'',
       placeDescription:''
     }
   }
 
   addDestination(){
-    const { destinations, place, placeDescription } = this.state
-    const id = destinations.push({ place, placeDescription })
-    this.setState({ destinations })
+    const { itinerary:{destinations}, place, placeDescription } = this.state
+    const newDestinations = destinations.push({ place, placeDescription })
+    this.setState({ newDestinations })
     this.setState({ place:"", placeDescription:""})
   }
 
+  saveItinerary(){
+    this.props.addItinerary(this.state.itinerary)
+  }
+
   deleteDestination(obj){
-    const { destinations } = this.state
+    const { destinations } = this.state.itinerary
     const newDestinations = destinations.filter(destination => destination !== obj)
     this.setState({ destinations: newDestinations })
-
   }
 
   renderDestinations(){
-    return this.state.destinations.map((obj, i) => {
+    return this.state.itinerary.destinations.map((obj, i) => {
       return (
         <div key={i}>
           <p>{obj.place}</p>
@@ -45,26 +54,48 @@ export default class AddItinerary extends Component{
     })
   }
 
+
   render(){
+    const { itinerary:{title, description}, place, placeDescription } = this.state
     return (
       <div>
-        <input type="text" placeholder="title" />
-        <textarea type="text" placeholder="description" />
+        <input type="text"
+               placeholder="title"
+               value={title}
+               onChange={(e) => {
+                   const {itinerary} = this.state;
+                   itinerary.title = e.target.value;
+                   this.setState({
+                     title
+                   });
+                 }}
+             />
+        <input type="text"
+               placeholder="description"
+               value={description}
+               onChange={(e) => {
+                   const {itinerary} = this.state;
+                   itinerary.description = e.target.value;
+                   this.setState({
+                     description
+                   });
+                 }}
+             />
           <div>
             <MapWrapperContainer />
             <input type="text"
                    placeholder="title"
-                   value={this.state.place}
+                   value={place}
                    onChange={(e) => this.setState({  place: e.target.value }) }
                  />
             <input type="text"
                    placeholder="description"
-                   value={this.state.placeDescription}
+                   value={placeDescription}
                    onChange={(e) => this.setState({ placeDescription: e.target.value }) }
                  />
                <button onClick={() => this.addDestination()}>add destination</button>
                {this.renderDestinations()}
-            <button>save itinerary</button>
+            <button onClick={()=> this.saveItinerary()}>save itinerary</button>
           </div>
       </div>
     )
