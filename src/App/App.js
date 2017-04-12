@@ -5,8 +5,10 @@ import { Link }             from 'react-router-dom';
 import './App.css';
 import LoginContainer from '../Login/LoginContainer';
 import NewUserContainer from '../NewUser/NewUserContainer';
-import MapContainer from '../InitialMap/MapContainer';
+import MapWrapper from '../InitialMap/MapWrapper';
 import AddItinerary from '../AddItinerary/AddItinerary';
+import NewDestination from '../NewDestination/NewDestination'
+
 // import GoogleMapReact from 'google-map-react';
 
 export default class App extends Component {

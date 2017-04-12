@@ -15,7 +15,7 @@ import { Route } from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory';
 
 /******* files *********/
-import * as reducers from './reducers';
+import { user, markers } from './reducers';
 
 import AppContainer from './App/AppContainer.js';
 import './index.css';
@@ -35,8 +35,12 @@ const history = createHistory();
 const middleWare = routerMiddleware(history)
 const devTools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
 
+
+
+
 const root = combineReducers({
-  reducers,
+  user,
+  markers,
   router: routerReducer
 })
 
