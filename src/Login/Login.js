@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { Link }             from 'react-router-dom';
+// import admin from "firebase-admin";
+import database from '../database';
+
 
 
 export default class Login extends Component {

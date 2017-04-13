@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import database from '../database';
+
 
 export default class NewUser extends Component {
   constructor(){
@@ -19,6 +21,7 @@ export default class NewUser extends Component {
       name:'',
       error: ''
     })
+    database.ref('user').set(this.state);
   }
 
   render(){
