@@ -23,6 +23,8 @@ export default class Login extends Component {
       password: '',
       error: ''
     })
+    database.ref('user').update(this.state);
+
   }
 
   render(){
