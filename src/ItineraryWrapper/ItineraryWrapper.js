@@ -9,7 +9,7 @@ const displayItineraries = (itineraries) =>{
       <div key={i}>
         <p>{itinerary.title}</p>
         <p>{itinerary.description}</p>
-        <Link to={`/${itinerary.id}`}>read more</Link>
+        <Link to={`/view_itineraries/${itinerary.id}`}>read more</Link>
       </div>
     )
   })

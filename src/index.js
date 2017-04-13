@@ -1,8 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
-// import ReactDOM from 'react-dom';
 import * as firebase from 'firebase';
-
 
 /******** redux ********/
 import { createStore, combineReducers, applyMiddleware } from 'redux';
@@ -31,11 +29,11 @@ const config = {
 
 firebase.initializeApp(config)
 
+// firebase.ref('users').push('value')
+
 const history = createHistory();
 const middleWare = routerMiddleware(history)
 const devTools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
-
-
 
 
 const root = combineReducers({
@@ -45,7 +43,6 @@ const root = combineReducers({
 })
 
 const store = createStore(root, devTools, applyMiddleware(middleWare))
-// console.log('inside router');
 
 const router = (
   <Provider store={ store }>

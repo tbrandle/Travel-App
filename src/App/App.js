@@ -6,9 +6,10 @@ import './App.css';
 import LoginContainer from '../Login/LoginContainer';
 import NewUserContainer from '../NewUser/NewUserContainer';
 import AddItineraryContainer from '../AddItinerary/AddItineraryContainer';
-import ItineraryWrapper from '../ItineraryWrapper/ItineraryWrapper'
+import ItineraryWrapper from '../ItineraryWrapper/ItineraryWrapper';
+import SingleItinerary from '../SingleItinerary/SingleItinerary';
 
-// import GoogleMapReact from 'google-map-react';
+  // import GoogleMapReact from 'google-map-react';
 
 export default class App extends Component {
 
@@ -16,24 +17,25 @@ export default class App extends Component {
   // once logged in, if user interests is empty, render interests component
   // if there is a user with interests, render home page
 
-
-
   render() {
     return (
       <div className="App">
         <header>
           <Link to='/'><h1>Travel App</h1></Link>
           <Link to='/view_itineraries'><h1>view_itineraries</h1></Link>
+          <Link to='/add_itinerary'><h1>add_itineraries</h1></Link>
         </header>
 
-        <Route path='/view_itineraries'
+        <Route exact
+               path='/view_itineraries'
                render={() => <ItineraryWrapper itineraries={this.props.itineraries}/>}
-             />
-
-           <Route path='/:id' component={ Itinerary } />
-        <Route path='/itinerary' component={ AddItineraryContainer } />
-        <Route path='/login' component={ LoginContainer } />
-        <Route path='/register' component={ NewUserContainer } />
+               />
+         <Route path='/view_itineraries/:id'
+                render={({match}) => <SingleItinerary match={match} itineraries={ this.props.itineraries } /> }
+                />
+        <Route path='/add_itinerary'  component={ AddItineraryContainer } />
+        <Route path='/login'  component={ LoginContainer } />
+        <Route path='/register'  component={ NewUserContainer } />
 
       </div>
     );
@@ -43,3 +45,12 @@ export default class App extends Component {
 
 // Google Places Autocomplete URL:
 // https://maps.googleapis.com/maps/api/place/autocomplete/json?input=[ *** whatever input here *** ]&types=geocode&key=AIzaSyALUflE7VDZS-iVv5V0tOq2UnsuCRpI2jY
+
+
+
+
+
+// <Route path='/:id'
+//   exact
+//   render={({match}) => <Itinerary match={match} /> }
+//   />
