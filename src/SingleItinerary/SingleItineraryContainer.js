@@ -1,5 +1,5 @@
 import SingleItinerary from './SingleItinerary.js';
-import * as actions from '../actions';
+import * as actions from '../actions/actions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 

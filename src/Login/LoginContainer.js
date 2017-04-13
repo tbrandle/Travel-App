@@ -1,6 +1,6 @@
 import Login from './Login.js';
 import { connect } from 'react-redux';
-import * as actions from '../actions.js';
+import * as actions from '../actions/actions';
 import { bindActionCreators } from 'redux';
 
 
