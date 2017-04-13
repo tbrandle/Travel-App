@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import database from '../database';
+import { database, auth } from '../database';
 
 
 export default class NewUser extends Component {
@@ -13,15 +13,25 @@ export default class NewUser extends Component {
     }
   }
 
-  signIn () {
-    this.props.logIn(this.state)
+  newRegister () {
+    const { history } = this.props
+    const { email, password } = this.state
+
+    auth.createUserWithEmailAndPassword(email, password).catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      // ...
+    });
+    // database.ref('users').push(this.state);
+
     this.setState({
       email: '',
       password: '',
       name:'',
       error: ''
     })
-    database.ref('user').set(this.state);
+    // history.push('/login')
   }
 
   render(){
@@ -30,7 +40,7 @@ export default class NewUser extends Component {
         <input placeholder="name" type="text" onChange={(e)=> this.setState({name: e.target.value})} value={ this.state.name } />
         <input placeholder="email" type="text" onChange={(e)=> this.setState({email: e.target.value})} value={ this.state.email } />
         <input placeholder="password" type="password" onChange={(e)=> this.setState({password: e.target.value})} value={ this.state.password } />
-        <button onClick={ () => this.signIn() }>Submit</button>
+        <button onClick={ () => this.newRegister() }>Submit</button>
       </div>
     )
   }

@@ -22,6 +22,7 @@ const history = createHistory();
 const middleWare = routerMiddleware(history)
 const devTools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
 
+
 const root = combineReducers({
   user,
   itineraries,
