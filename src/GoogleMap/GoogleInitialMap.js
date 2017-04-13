@@ -6,8 +6,12 @@ import './GoogleMap.css';
 const renderSingleMarker =(markers) => {
   return markers.map((marker, index) => <Marker {...marker} key={index} />)
 }
+
 const renderAllMarkers =(destinations) => {
-  const allMarkers = destinations.filter(obj => obj.markers)
+  const allMarkers = destinations.reduce((arr, obj) => {
+    obj.markers && arr.push({position: obj.markers[0].position})
+    return arr
+  }, [])
   return allMarkers.map((marker, index) => <Marker {...marker} key={index} />)
 }
 
@@ -20,7 +24,7 @@ const GoogleGoogleInitialMap = withGoogleMap(({ destinations, markers, addMarker
       onClick={(event)=> addMarker(event)}>
 
       { renderSingleMarker(markers) }
-      { destinations.length && renderAllMarkers(destinations) }
+      { renderAllMarkers(destinations) }
 
     </GoogleMap>
   )
