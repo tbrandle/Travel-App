@@ -1,5 +1,6 @@
 import React from 'react';
 import GoogleInitialMap from '../GoogleMap/GoogleInitialMap';
+import './SingleItinerary.css';
 
 
 
@@ -12,13 +13,11 @@ const SingleItinerary = ({match, itineraries}) => {
     <div>
       {itinerary.title}
       {itinerary.body}
-      <div className='map-container' style={{height: "400px", width:"400px", margin: "auto"}}>
-
+      <div className='single-map-container'>
         <GoogleInitialMap containerElement={ <div style={{ height: "100%"}}/> }
           mapElement={ <div style={{ height: "100%"}}/> }
           destinations={destinations}
           />
-
       </div>
     </div>
   )

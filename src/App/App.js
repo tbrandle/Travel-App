@@ -30,9 +30,9 @@ export default class App extends Component {
                path='/view_itineraries'
                render={() => <ItineraryWrapper itineraries={this.props.itineraries}/>}
                />
-         <Route path='/view_itineraries/:id'
-                render={({match}) => <SingleItineraryContainer match={match} /> }
-                />
+        <Route path='/view_itineraries/:id'
+               render={({match}) => <SingleItineraryContainer match={match} /> }
+               />
         <Route path='/add_itinerary'  component={ AddItineraryContainer } />
         <Route path='/login'  component={ LoginContainer } />
         <Route path='/register'  component={ NewUserContainer } />

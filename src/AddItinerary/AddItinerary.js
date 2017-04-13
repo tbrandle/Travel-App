@@ -27,7 +27,7 @@ export default class AddItinerary extends Component{
           lng: marker.latLng.lng()
         }
       }
-    this.setState({ markers: [...this.state.markers, newMarker] })
+    this.setState({ markers: [ newMarker] })
   }
 
   addDestination(){
@@ -82,12 +82,12 @@ export default class AddItinerary extends Component{
                onChange={(e) => this.setState({  description: e.target.value }) }
              />
           <div>
-          <div className='map-container' style={{height: "400px", width:"400px", margin: "auto"}}>
+          <div className='add-map-container'>
             <GoogleInitialMap containerElement={ <div style={{ height: "100%"}}/> }
-              mapElement={ <div style={{ height: "100%"}}/> }
-              markers={this.state.markers}
-              destinations={this.state.destinations}
-              addMarker={(marker) => this.addMarker(marker) }
+                              mapElement={ <div style={{ height: "100%"}}/> }
+                              markers={this.state.markers}
+                              destinations={this.state.destinations}
+                              addMarker={(marker) => this.addMarker(marker) }
               />
           </div>
           <input type="text"
