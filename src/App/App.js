@@ -7,7 +7,7 @@ import LoginContainer from '../Login/LoginContainer';
 import NewUserContainer from '../NewUser/NewUserContainer';
 import AddItineraryContainer from '../AddItinerary/AddItineraryContainer';
 import ItineraryWrapper from '../ItineraryWrapper/ItineraryWrapper';
-import SingleItinerary from '../SingleItinerary/SingleItinerary';
+import SingleItineraryContainer from '../SingleItinerary/SingleItineraryContainer';
 
   // import GoogleMapReact from 'google-map-react';
 
@@ -31,7 +31,7 @@ export default class App extends Component {
                render={() => <ItineraryWrapper itineraries={this.props.itineraries}/>}
                />
          <Route path='/view_itineraries/:id'
-                render={({match}) => <SingleItinerary match={match} itineraries={ this.props.itineraries } /> }
+                render={({match}) => <SingleItineraryContainer match={match} /> }
                 />
         <Route path='/add_itinerary'  component={ AddItineraryContainer } />
         <Route path='/login'  component={ LoginContainer } />
