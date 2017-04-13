@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import './AddItinerary.css'
-import { Link }             from 'react-router-dom';
-// import MapWrapperContainer from '../GoogleMap/MapWrapperContainer'
 import GoogleInitialMap from '../GoogleMap/GoogleInitialMap'
 
 

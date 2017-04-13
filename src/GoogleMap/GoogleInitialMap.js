@@ -8,12 +8,10 @@ const renderSingleMarker =(markers) => {
 }
 
 const renderAllMarkers =(destinations) => {
-  console.log("inside render all markers");
   const allMarkers = destinations.reduce((arr, obj) => {
     obj.markers && arr.push({position: obj.markers[0].position})
     return arr
   }, [])
-  console.log("allMarkers ", allMarkers);
   return allMarkers.map((marker, index) => <Marker {...marker} key={index} />)
 }
 
