@@ -45,12 +45,3 @@ export default class App extends Component {
 
 // Google Places Autocomplete URL:
 // https://maps.googleapis.com/maps/api/place/autocomplete/json?input=[ *** whatever input here *** ]&types=geocode&key=AIzaSyALUflE7VDZS-iVv5V0tOq2UnsuCRpI2jY
-
-
-
-
-
-// <Route path='/:id'
-//   exact
-//   render={({match}) => <Itinerary match={match} /> }
-//   />
