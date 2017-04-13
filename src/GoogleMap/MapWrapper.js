@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import InitialMap from './InitialMap'
+import GoogleInitialMap from './GoogleInitialMap'
 
 export default class MapWrapper extends Component {
   constructor(props) {
@@ -17,7 +17,7 @@ export default class MapWrapper extends Component {
   render() {
     return (
       <div className='map-container' style={{height: "400px", width:"400px", margin: "auto"}}>
-        <InitialMap
+        <GoogleInitialMap
           containerElement={
             <div style={{ height: "100%"}}/>
           }

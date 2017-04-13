@@ -3,7 +3,7 @@ import { withGoogleMap, GoogleMap, Marker, InfoWindow, SearchBox } from 'react-g
 import './GoogleMap.css';
 
 
-const InitialMap = withGoogleMap(props => {
+const GoogleGoogleInitialMap = withGoogleMap(props => {
   return (
     <GoogleMap
       ref={ props.onMapLoad }
@@ -14,7 +14,7 @@ const InitialMap = withGoogleMap(props => {
   )
 })
 
-export default InitialMap;
+export default GoogleGoogleInitialMap;
 
 
 // onClick={() => props.onMarkerClick(newMarker)}
@@ -26,7 +26,7 @@ export default InitialMap;
 
 
 
-// 
+//
 // {props.itinerary.markers.map((marker, index) => (
 //   <Marker
 //     {...marker}

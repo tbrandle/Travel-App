@@ -13,7 +13,7 @@ export const user = (state = initialUserState, action) => {
   }
 }
 
-export const itinerary = (state = [], action) => {
+export const itineraries = (state = [], action) => {
   switch(action.type){
     case 'ADD_ITINERARY':
       return [...state, action.itinerary];

@@ -5,9 +5,8 @@ import { Link }             from 'react-router-dom';
 import './App.css';
 import LoginContainer from '../Login/LoginContainer';
 import NewUserContainer from '../NewUser/NewUserContainer';
-import MapWrapper from '../InitialMap/MapWrapper';
 import AddItineraryContainer from '../AddItinerary/AddItineraryContainer';
-import NewDestination from '../NewDestination/NewDestination'
+import ItineraryWrapper from '../ItineraryWrapper/ItineraryWrapper'
 
 // import GoogleMapReact from 'google-map-react';
 
@@ -17,13 +16,21 @@ export default class App extends Component {
   // once logged in, if user interests is empty, render interests component
   // if there is a user with interests, render home page
 
+
+
   render() {
     return (
       <div className="App">
         <header>
           <Link to='/'><h1>Travel App</h1></Link>
+          <Link to='/view_itineraries'><h1>view_itineraries</h1></Link>
         </header>
 
+        <Route path='/view_itineraries'
+               render={() => <ItineraryWrapper itineraries={this.props.itineraries}/>}
+             />
+
+           <Route path='/:id' component={ Itinerary } />
         <Route path='/itinerary' component={ AddItineraryContainer } />
         <Route path='/login' component={ LoginContainer } />
         <Route path='/register' component={ NewUserContainer } />
