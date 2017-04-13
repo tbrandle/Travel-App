@@ -13,7 +13,7 @@ import { Route } from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory';
 
 /******* files *********/
-import { user, itineraries } from './reducers';
+import { user, itineraries } from './reducers/reducers';
 
 import AppContainer from './App/AppContainer.js';
 import './index.css';
