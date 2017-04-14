@@ -28,7 +28,7 @@ export default class NewUser extends Component {
       if (firebaseUser) {
         console.log(firebaseUser);
         this.props.logIn(this.state)
-        history.push('/login')
+        history.push('/')
 
       } else {
         console.log('not logged in');

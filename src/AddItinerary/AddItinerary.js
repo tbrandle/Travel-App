@@ -69,39 +69,41 @@ export default class AddItinerary extends Component{
   render(){
     return (
       <div>
-        <input type="text"
+        <input className="input"
+               type="text"
                placeholder="title"
                value={this.state.title}
                onChange={(e) => this.setState({  title: e.target.value }) }
              />
-        <input type="text"
+        <input className="input"
+               type="text"
                placeholder="description"
                value={this.state.description}
                onChange={(e) => this.setState({  description: e.target.value }) }
              />
-          <div>
-          <div className='add-map-container'>
-            <GoogleInitialMap containerElement={ <div style={{ height: "100%"}}/> }
-                              mapElement={ <div style={{ height: "100%"}}/> }
-                              markers={this.state.markers}
-                              destinations={this.state.destinations}
-                              addMarker={(marker) => this.addMarker(marker) }
-              />
-          </div>
-          <input type="text"
-                 placeholder="title"
-                 value={this.state.place}
-                 onChange={(e) => this.setState({  place: e.target.value }) }
-               />
-          <input type="text"
-                 placeholder="description"
-                 value={this.state.placeDescription}
-                 onChange={(e) => this.setState({ placeDescription: e.target.value }) }
-               />
-             <button onClick={() => this.addDestination()}>add destination</button>
-             {this.renderDestinations()}
-          <button onClick={()=> this.saveItinerary()}>save itinerary</button>
+         <div className='add-map-container'>
+          <GoogleInitialMap containerElement={ <div style={{ height: "100%"}}/> }
+                            mapElement={ <div style={{ height: "100%"}} /> }
+                            markers={this.state.markers}
+                            destinations={this.state.destinations}
+                            addMarker={(marker) => this.addMarker(marker) }
+            />
         </div>
+        <input className="input"
+               type="text"
+               placeholder="title"
+               value={this.state.place}
+               onChange={(e) => this.setState({  place: e.target.value }) }
+             />
+        <input className="input"
+               type="text"
+               placeholder="description"
+               value={this.state.placeDescription}
+               onChange={(e) => this.setState({ placeDescription: e.target.value }) }
+             />
+         <button onClick={() => this.addDestination()}>add destination</button>
+           {this.renderDestinations()}
+         <button onClick={()=> this.saveItinerary()}>save itinerary</button>
       </div>
     )
   }
