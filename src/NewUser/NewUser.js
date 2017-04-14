@@ -18,20 +18,28 @@ export default class NewUser extends Component {
     const { email, password } = this.state
 
     auth.createUserWithEmailAndPassword(email, password).catch(function(error) {
-      // Handle Errors here.
       var errorCode = error.code;
       var errorMessage = error.message;
-      // ...
+      console.log(errorMessage);
+      this.setState({ error: 'error' });
     });
-    // database.ref('users').push(this.state);
 
-    this.setState({
-      email: '',
-      password: '',
-      name:'',
-      error: ''
+    auth.onAuthStateChanged(firebaseUser => {
+      if (firebaseUser) {
+        console.log(firebaseUser);
+        this.props.logIn(this.state)
+        history.push('/login')
+
+      } else {
+        console.log('not logged in');
+        this.setState({
+          email: '',
+          password: '',
+          name:'',
+          error: ''
+        })
+      }
     })
-    // history.push('/login')
   }
 
   render(){
