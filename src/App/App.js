@@ -22,8 +22,8 @@ export default class App extends Component {
       <div className="App">
         <header className="header">
           <Link to='/' className="logo"><h1 className="logo">TravelMe</h1></Link>
-          <Link to='/view_itineraries' className="nav-item"><h1>view itineraries</h1></Link>
-          <Link to='/add_itinerary' className="nav-item"><h1>add itineraries</h1></Link>
+          <Link to='/view_itineraries' className="nav-item"><h1>view</h1></Link>
+          <Link to='/add_itinerary' className="nav-item"><h1>add</h1></Link>
         </header>
 
         <Route exact

@@ -27,10 +27,12 @@ h1{
 
 .nav-item{
   font-family: 'Open Sans Condensed', sans-serif;
-  font-weight: 300i;
+  font-family: 'Pacifico', cursive;*/
+  font-weight: 700;
   font-size: 25px;
   text-decoration: none;
+  color: #005FA0;
 }
-
+/*font-family: 'Open Sans Condensed', sans-serif;
 /*font-family: 'Yesteryear', cursive;*/
 /*font-family: 'Cabin', sans-serif;*/

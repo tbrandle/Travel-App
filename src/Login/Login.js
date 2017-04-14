@@ -3,9 +3,6 @@ import { Link }             from 'react-router-dom';
 // import admin from "firebase-admin";
 import { database, auth } from '../database';
 
-
-
-
 export default class Login extends Component {
 
   constructor(){
