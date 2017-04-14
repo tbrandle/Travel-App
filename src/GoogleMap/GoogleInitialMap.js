@@ -8,12 +8,10 @@ const renderSingleMarker =(markers) => {
 }
 
 const renderAllMarkers =(destinations) => {
-  console.log("inside render all markers");
   const allMarkers = destinations.reduce((arr, obj) => {
     obj.markers && arr.push({position: obj.markers[0].position})
     return arr
   }, [])
-  console.log("allMarkers ", allMarkers);
   return allMarkers.map((marker, index) => <Marker {...marker} key={index} />)
 }
 
@@ -21,9 +19,9 @@ const GoogleInitialMap = withGoogleMap(({ destinations, markers, addMarker, onMa
   return (
     <GoogleMap
       ref={ onMapLoad }
-      defaultZoom={14}
+      defaultZoom={12}
       defaultCenter={{ lat:39.73915 , lng: -104.9847 }}
-      onClick={(event) => { addMarker && addMarker(event)}}>
+      onClick={(event) => addMarker && addMarker(event)}>
 
       { markers && renderSingleMarker(markers) }
       { destinations.length && renderAllMarkers(destinations) }

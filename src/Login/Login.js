@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link }             from 'react-router-dom';
-
+// import admin from "firebase-admin";
+import { database, auth } from '../database';
 
 export default class Login extends Component {
 
@@ -14,12 +15,29 @@ export default class Login extends Component {
   }
 
   signIn () {
-    this.props.logIn(this.state)
+    const { email, password } = this.state
+    auth.signInWithEmailAndPassword(email, password).catch((error) => {
+        console.log(error);
+      });
+
+    // this.props.logIn(this.state)
     this.setState({
       email: '',
       password: '',
       error: ''
     })
+
+    // database.ref('users').once('value', snap => {
+    //   const users = snap.val();
+    //   const userArr = []
+    //   userArr.push(users)
+      // const validEmail = users.filter(userObj => {
+      //   console.log(userObj.name)
+      //   console.log(userObj)
+      // })
+      // database.ref('user').update(this.state);
+    // })
+
   }
 
   render(){

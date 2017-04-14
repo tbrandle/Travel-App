@@ -20,19 +20,19 @@ export default class App extends Component {
   render() {
     return (
       <div className="App">
-        <header>
-          <Link to='/'><h1>Travel App</h1></Link>
-          <Link to='/view_itineraries'><h1>view_itineraries</h1></Link>
-          <Link to='/add_itinerary'><h1>add_itineraries</h1></Link>
+        <header className="header">
+          <Link to='/' className="logo"><h1 className="logo">TravelMe</h1></Link>
+          <Link to='/view_itineraries' className="nav-item"><h1>view</h1></Link>
+          <Link to='/add_itinerary' className="nav-item"><h1>add</h1></Link>
         </header>
 
         <Route exact
                path='/view_itineraries'
                render={() => <ItineraryWrapper itineraries={this.props.itineraries}/>}
                />
-         <Route path='/view_itineraries/:id'
-                render={({match}) => <SingleItineraryContainer match={match} /> }
-                />
+        <Route path='/view_itineraries/:id'
+               render={({match}) => <SingleItineraryContainer match={match} /> }
+               />
         <Route path='/add_itinerary'  component={ AddItineraryContainer } />
         <Route path='/login'  component={ LoginContainer } />
         <Route path='/register'  component={ NewUserContainer } />

@@ -1,0 +1,67 @@
+.destination-wrapper{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-map-container,
+.add-destination-section{
+  height: 300px;
+  width: 100%;
+  margin: auto;
+}
+
+.add-destination-div{
+  position: absolute;
+  top: 0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.35);
+}
+
+
+.destination-input {
+
+}
+
+.input{
+  display: block;
+  margin: 9px auto;
+  padding: 7px;
+  width: 61%;
+  font-size: 15px;
+  text-align: center;
+  border: 1px lightgrey solid;
+  border-radius: 4px;
+}
+
+.description {
+  height: 20px;
+}
+
+.input::placeholder {
+  color: lightgrey;
+  text-align: center;
+  font-size: 15px
+}
+
+.ok-submit {
+  width: 50px;
+  position: absolute;
+  top: -2px;
+  right: 2px;
+}
+
+.btn {
+  color: #F28C48;
+  border: 1px #F28C48 solid;
+  background-color: white;
+  padding: 8px 23px;
+  margin: 6px;
+  align-content: center;
+  border-radius: 6px 6px;
+}

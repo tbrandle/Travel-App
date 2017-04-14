@@ -1,3 +1,6 @@
+import database from '../database';
+
+
 export const logIn = (user) => {
   return {
     type: 'LOG_IN',
