@@ -13,6 +13,7 @@
 }
 
 .add-destination-div{
+  z-index: 1;
   position: absolute;
   top: 0;
   flex-direction: column;
@@ -23,6 +24,10 @@
   background-color: rgba(0, 0, 0, 0.35);
 }
 
+.btn:hover,
+.ok-submit:hover {
+  cursor: pointer;
+}
 
 .destination-input {
 
@@ -50,10 +55,10 @@
 }
 
 .ok-submit {
-  width: 50px;
+  width: 42px;
   position: absolute;
-  top: -2px;
-  right: 2px;
+  top: 2px;
+  right: 5px;
 }
 
 .btn {

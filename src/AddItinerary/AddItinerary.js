@@ -54,7 +54,7 @@ export default class AddItinerary extends Component{
         <div key={i}>
           <p>{obj.place}</p>
           <p>{obj.placeDescription}</p>
-          <button onClick={() => this.deleteDestination(obj)}>Delete</button>
+          <button className="btn" onClick={() => this.deleteDestination(obj)}>Delete</button>
         </div>
       )
     })
