@@ -2,7 +2,6 @@ import React from 'react';
 import { withGoogleMap, GoogleMap, Marker, InfoWindow, SearchBox } from 'react-google-maps';
 import './GoogleMap.css';
 
-
 const renderSingleMarker =(markers) => {
   return markers.map((marker, index) => <Marker {...marker} key={index} />)
 }
@@ -15,16 +14,16 @@ const renderAllMarkers =(destinations) => {
   return allMarkers.map((marker, index) => <Marker {...marker} key={index} />)
 }
 
-const GoogleInitialMap = withGoogleMap(({ destinations, markers, addMarker, onMapLoad }) => {
+const GoogleInitialMap = withGoogleMap((props) => {
   return (
     <GoogleMap
-      ref={ onMapLoad }
+      ref={ props.onMapLoad }
       defaultZoom={12}
       defaultCenter={{ lat:39.73915 , lng: -104.9847 }}
-      onClick={(event) => addMarker && addMarker(event)}>
+      onClick={(event) => props.addMarker && props.addMarker(event)}>
 
-      { markers && renderSingleMarker(markers) }
-      { destinations.length && renderAllMarkers(destinations) }
+      { props.markers && renderSingleMarker(props.markers) }
+      { props.destinations.length && renderAllMarkers(props.destinations) }
 
     </GoogleMap>
   )

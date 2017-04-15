@@ -51,11 +51,13 @@ export default class AddItinerary extends Component{
   renderDestinations(){
     return this.state.destinations.map((obj, i) => {
       return (
-        <div key={i}>
-          <p>{obj.place}</p>
-          <p>{obj.placeDescription}</p>
-          <button className="btn" onClick={() => this.deleteDestination(obj)}>Delete</button>
-        </div>
+          <div className="single-destination" >
+            <p className="place">{obj.place}</p>
+            <p>{obj.placeDescription}</p>
+            <input type="image"
+              src={require('../../images/cancel.svg')}
+              className="delete-btn" onClick={() => this.deleteDestination(obj)} />
+          </div>
       )
     })
   }
@@ -118,10 +120,11 @@ export default class AddItinerary extends Component{
                     onClick={ () => this.addDestinationField() }
                    />
            </section>
-         <button className="btn" onClick={()=> this.saveItinerary()}>save itinerary</button>
+           <section className="single-destination-wrapper">
+             {this.renderDestinations()}
+           </section>
 
-         {this.renderDestinations()}
-
+         <button className="btn save-btn" onClick={()=> this.saveItinerary()}>save itinerary</button>
       </div>
     )
   }

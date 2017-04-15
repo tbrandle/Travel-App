@@ -29,8 +29,31 @@
   cursor: pointer;
 }
 
-.destination-input {
+.place{
+  font-weight: 700;
+}
 
+.delete-btn{
+  float: right;
+  height: 25px;
+}
+
+.save-btn {
+  position: fixed;
+bottom: 0px;
+right: 0px;
+}
+.single-destination{
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px lightgrey solid;
+}
+
+.single-destination-wrapper{
+  height: 209px;
+  overflow: scroll;
+  background-color: rgba(128, 128, 128, 0.08);
+  padding: 4px 14px;
 }
 
 .input{
