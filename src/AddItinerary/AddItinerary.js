@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './AddItinerary.css'
 import GoogleInitialMap from '../GoogleMap/GoogleInitialMap'
+import { database } from '../database';
 
 
 
@@ -8,6 +9,7 @@ export default class AddItinerary extends Component{
   constructor(){
     super()
     this.state={
+      uid: '',
       id: Date.now(),
       title:'',
       description:'',
@@ -17,6 +19,10 @@ export default class AddItinerary extends Component{
       placeDescription:'',
       display:'none'
     }
+  }
+
+  componentDidMount(){
+    this.setState({ uid: this.props.currentUser.uid })
   }
 
   addMarker(marker){
@@ -45,24 +51,28 @@ export default class AddItinerary extends Component{
     const { destinations } = this.state
     const newDestinations = destinations.filter(destination => destination !== obj)
     this.setState({ destinations: newDestinations })
-
   }
 
   renderDestinations(){
     return this.state.destinations.map((obj, i) => {
       return (
-        <div key={i}>
-          <p>{obj.place}</p>
-          <p>{obj.placeDescription}</p>
-          <button onClick={() => this.deleteDestination(obj)}>Delete</button>
-        </div>
+          <div className="single-destination" >
+            <p className="place">{obj.place}</p>
+            <p>{obj.placeDescription}</p>
+            <input type="image"
+              src={require('../../images/cancel.svg')}
+              className="delete-btn" onClick={() => this.deleteDestination(obj)} />
+          </div>
       )
     })
   }
 
   saveItinerary(){
     this.props.addItinerary(this.state)
+    database.ref('itineraries').push().set(this.state)
+
     this.setState({
+      uid:'',
       id: Date.now(),
       title:'',
       description:'',
@@ -118,10 +128,11 @@ export default class AddItinerary extends Component{
                     onClick={ () => this.addDestinationField() }
                    />
            </section>
-         <button className="btn" onClick={()=> this.saveItinerary()}>save itinerary</button>
+           <section className="single-destination-wrapper">
+             {this.renderDestinations()}
+           </section>
 
-         {this.renderDestinations()}
-
+         <button className="btn save-btn" onClick={()=> this.saveItinerary()}>save itinerary</button>
       </div>
     )
   }

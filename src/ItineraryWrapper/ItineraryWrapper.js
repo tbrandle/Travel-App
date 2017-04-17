@@ -6,7 +6,7 @@ const displayItineraries = (itineraries) =>{
 
   return itineraries.map((itinerary, i) => {
     return (
-      <div key={i}>
+      <div className="single-destination" key={i}>
         <p>{itinerary.title}</p>
         <p>{itinerary.description}</p>
         <Link to={`/view_itineraries/${itinerary.id}`}>read more</Link>

@@ -7,7 +7,7 @@ export default class NewUser extends Component {
     super();
     this.state={
       name:'',
-      email: '',
+      userEmail: '',
       password: '',
       error: ''
     }
@@ -15,38 +15,34 @@ export default class NewUser extends Component {
 
   newRegister () {
     const { history } = this.props
-    const { email, password } = this.state
+    const { userEmail, password, name } = this.state
+    const updateErrorInState = (errorMessage) => { this.setState({ error: errorMessage }) }
 
-    auth.createUserWithEmailAndPassword(email, password).catch(function(error) {
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      console.log(errorMessage);
-      this.setState({ error: 'error' });
-    });
-
-    auth.onAuthStateChanged(firebaseUser => {
-      if (firebaseUser) {
-        console.log(firebaseUser);
-        this.props.logIn(this.state)
+    auth.createUserWithEmailAndPassword(userEmail, password)
+      .then(user => {
+        const { uid, email } = user
+        const userObj = {
+            name: this.state.name,
+            email,
+            uid
+        }
+        database.ref('users').update(userObj)
+        this.props.logIn(userObj)
         history.push('/')
-
-      } else {
-        console.log('not logged in');
-        this.setState({
-          email: '',
-          password: '',
-          name:'',
-          error: ''
-        })
-      }
-    })
+      })
+      .catch(function(error) {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        updateErrorInState(errorMessage)
+        // need to display the errorMessage
+      });
   }
 
   render(){
     return (
       <div>
         <input placeholder="name" type="text" onChange={(e)=> this.setState({name: e.target.value})} value={ this.state.name } />
-        <input placeholder="email" type="text" onChange={(e)=> this.setState({email: e.target.value})} value={ this.state.email } />
+        <input placeholder="email" type="text" onChange={(e)=> this.setState({userEmail: e.target.value})} value={ this.state.userEmail } />
         <input placeholder="password" type="password" onChange={(e)=> this.setState({password: e.target.value})} value={ this.state.password } />
         <button onClick={ () => this.newRegister() }>Submit</button>
       </div>

@@ -1,13 +1,11 @@
-const initialUserState = {
-  email: '',
-  password: '',
-  error: ''
-};
 
-export const user = (state = initialUserState, action) => {
+
+export const currentUser = (state = {}, action) => {
   switch(action.type){
     case 'LOG_IN':
-      return [...state, action.user];
+      return action.user;
+    case 'LOG_OUT':
+      return {};
     default:
       return state;
   }

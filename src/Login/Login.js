@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link }             from 'react-router-dom';
 // import admin from "firebase-admin";
 import { database, auth } from '../database';
+import './Login.css';
 
 export default class Login extends Component {
 
@@ -14,13 +15,32 @@ export default class Login extends Component {
     }
   }
 
+  getFirebaseUserObject(uid){
+    const { logIn } = this.props
+    database.ref("users").on("value", function(snapshot) {
+
+      const user = snapshot.val();
+      console.log(user[uid]);
+      logIn(user[uid])
+    }, function (errorObject) {
+      console.log("The read failed: " + errorObject.code);
+    });
+
+  }
+
   signIn () {
     const { email, password } = this.state
-    auth.signInWithEmailAndPassword(email, password).catch((error) => {
+    const { history } = this.props
+    auth.signInWithEmailAndPassword(email, password)
+      .then(user => {
+        const { uid, email } = user
+        this.getFirebaseUserObject(uid)
+        history.push('/')
+      })
+    .catch((error) => {
         console.log(error);
       });
 
-    // this.props.logIn(this.state)
     this.setState({
       email: '',
       password: '',
@@ -42,16 +62,20 @@ export default class Login extends Component {
 
   render(){
     return (
-      <div>
-        <input type="text"
+      <div className="login-wrapper">
+        <input className="input"
+               placeholder="email"
+               type="text"
                value={ this.state.email }
                onChange={(e) =>  this.setState({ email: e.target.value }) }
                />
-        <input type="password"
+        <input className="input"
+               placeholder="password"
+               type="password"
                value={ this.state.password }
                onChange={(e) =>  this.setState({ password: e.target.value }) }
                />
-        <button onClick={ () => this.signIn() }>Submit</button>
+             <button className="btn" onClick={ () => this.signIn() }>Submit</button>
         <p>No account? <Link to='/register'>Register here.</Link></p>
 
       </div>

@@ -13,6 +13,7 @@
 }
 
 .add-destination-div{
+  z-index: 1;
   position: absolute;
   top: 0;
   flex-direction: column;
@@ -23,9 +24,36 @@
   background-color: rgba(0, 0, 0, 0.35);
 }
 
+.btn:hover,
+.ok-submit:hover {
+  cursor: pointer;
+}
 
-.destination-input {
+.place{
+  font-weight: 700;
+}
 
+.delete-btn{
+  float: right;
+  height: 25px;
+}
+
+.save-btn {
+  position: fixed;
+bottom: 0px;
+right: 0px;
+}
+.single-destination{
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px lightgrey solid;
+}
+
+.single-destination-wrapper{
+  height: 209px;
+  overflow: scroll;
+  background-color: rgba(128, 128, 128, 0.08);
+  padding: 4px 14px;
 }
 
 .input{
@@ -50,10 +78,10 @@
 }
 
 .ok-submit {
-  width: 50px;
+  width: 42px;
   position: absolute;
-  top: -2px;
-  right: 2px;
+  top: 2px;
+  right: 5px;
 }
 
 .btn {

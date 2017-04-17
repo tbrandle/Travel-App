@@ -1,0 +1,7 @@
+TODO
+- save itinerary to firebase
+- logout functionality
+- write tests
+- figure out how to save to individual accounts
+- style login and register forms
+- refactor
