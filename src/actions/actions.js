@@ -1,10 +1,16 @@
 import database from '../database';
 
-
 export const logIn = (user) => {
+
   return {
     type: 'LOG_IN',
     user
+  }
+}
+
+export const logOut = () => {
+  return {
+    type: 'LOG_OUT',
   }
 }
 

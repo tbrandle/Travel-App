@@ -35,6 +35,8 @@ export default class App extends Component {
     }, function(error) {
       console.error('Sign Out Error', error);
     });
+
+    this.props.logOut()
   }
 
   render() {

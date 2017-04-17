@@ -22,12 +22,11 @@ export default class NewUser extends Component {
       .then(user => {
         const { uid, email } = user
         const userObj = {
-          [uid]: {
             name: this.state.name,
-            email
-          }
+            email,
+            uid
         }
-        database.ref('users').push().set(userObj)
+        database.ref('users').update(userObj)
         this.props.logIn(userObj)
         history.push('/')
       })

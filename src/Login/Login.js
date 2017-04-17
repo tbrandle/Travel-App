@@ -15,13 +15,32 @@ export default class Login extends Component {
     }
   }
 
+  getFirebaseUserObject(uid){
+    const { logIn } = this.props
+    database.ref("users").on("value", function(snapshot) {
+
+      const user = snapshot.val();
+      console.log(user[uid]);
+      logIn(user[uid])
+    }, function (errorObject) {
+      console.log("The read failed: " + errorObject.code);
+    });
+
+  }
+
   signIn () {
     const { email, password } = this.state
-    auth.signInWithEmailAndPassword(email, password).catch((error) => {
+    const { history } = this.props
+    auth.signInWithEmailAndPassword(email, password)
+      .then(user => {
+        const { uid, email } = user
+        this.getFirebaseUserObject(uid)
+        history.push('/')
+      })
+    .catch((error) => {
         console.log(error);
       });
 
-    // this.props.logIn(this.state)
     this.setState({
       email: '',
       password: '',
