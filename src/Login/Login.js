@@ -18,9 +18,7 @@ export default class Login extends Component {
   getFirebaseUserObject(uid){
     const { logIn } = this.props
     database.ref("users").on("value", function(snapshot) {
-
       const user = snapshot.val();
-      console.log(user[uid]);
       logIn(user[uid])
     }, function (errorObject) {
       console.log("The read failed: " + errorObject.code);

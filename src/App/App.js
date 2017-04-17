@@ -8,6 +8,7 @@ import NewUserContainer from '../NewUser/NewUserContainer';
 import AddItineraryContainer from '../AddItinerary/AddItineraryContainer';
 import ItineraryWrapper from '../ItineraryWrapper/ItineraryWrapper';
 import SingleItineraryContainer from '../SingleItinerary/SingleItineraryContainer';
+import ProfileContainer from '../Profile/ProfileContainer';
 import { database, auth } from '../database';
 
   // import GoogleMapReact from 'google-map-react';
@@ -21,12 +22,15 @@ export default class App extends Component {
 
 
   componentDidMount(){
-    database.ref('itineraries').on("value", (snapshot) => {
-      const itineraries = snapshot.val()
-      Object.keys(itineraries).map(key => this.props.addItinerary(itineraries[key]));
-    }, function (errorObject) {
-      console.log("The read failed: " + errorObject.code);
-    });
+    if (!this.props.itineraries.length) {
+      console.log("app compdid mount fetch");
+      database.ref('itineraries').on("value", (snapshot) => {
+        const itineraries = snapshot.val()
+        Object.keys(itineraries).map(key => this.props.retrieveItineraries(itineraries[key]));
+      }, function (errorObject) {
+        console.log("The read failed: " + errorObject.code);
+      });
+    }
   }
 
   signOut(){
@@ -50,6 +54,7 @@ export default class App extends Component {
 
         </header>
 
+        <Route exact path='/' component={ ProfileContainer }/>
         <Route exact
                path='/view_itineraries'
                render={() => <ItineraryWrapper itineraries={this.props.itineraries}/>}

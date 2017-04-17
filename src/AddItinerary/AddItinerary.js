@@ -68,11 +68,11 @@ export default class AddItinerary extends Component{
   }
 
   saveItinerary(){
+    console.log("inside save itin");
     this.props.addItinerary(this.state)
     database.ref('itineraries').push().set(this.state)
 
     this.setState({
-      uid:'',
       id: Date.now(),
       title:'',
       description:'',

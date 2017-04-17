@@ -21,3 +21,10 @@ export const addItinerary = (itinerary) => {
     itinerary
   }
 }
+export const retrieveItineraries = (itinerary) => {
+  console.log("inside action");
+  return {
+    type: 'RETRIEVE',
+    itinerary
+  }
+}
