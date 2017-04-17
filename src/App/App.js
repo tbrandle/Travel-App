@@ -22,7 +22,6 @@ export default class App extends Component {
 
 
   componentDidMount(){
-    if (!this.props.itineraries.length) {
       console.log("app compdid mount fetch");
       database.ref('itineraries').on("value", (snapshot) => {
         const itineraries = snapshot.val()
@@ -30,7 +29,6 @@ export default class App extends Component {
       }, function (errorObject) {
         console.log("The read failed: " + errorObject.code);
       });
-    }
   }
 
   signOut(){

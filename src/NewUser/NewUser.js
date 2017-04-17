@@ -20,15 +20,19 @@ export default class NewUser extends Component {
 
     auth.createUserWithEmailAndPassword(userEmail, password)
       .then(user => {
-        const { uid, email } = user
-        const userObj = {
-            name: this.state.name,
-            email,
-            uid
-        }
-        database.ref('users').update(userObj)
-        this.props.logIn(userObj)
-        history.push('/')
+
+          const { uid, email } = user
+          const userObj = {
+            [uid]:{
+              name: this.state.name,
+              email,
+              uid
+            }
+          }
+          database.ref('users').update(userObj)
+          this.props.logIn(userObj)
+          history.push('/')
+
       })
       .catch(function(error) {
         const errorCode = error.code;

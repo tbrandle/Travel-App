@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import ItineraryWrapper from '../ItineraryWrapper/ItineraryWrapper';
+
 
 export default class Profile extends Component {
 
@@ -12,10 +14,9 @@ export default class Profile extends Component {
   renderLists(){
     const { render } = this.state
     const { itineraries, currentUser:{ uid }} = this.props
-    console.log(itineraries, uid);
     if (render === 'itineraries') {
-      const test =  itineraries.filter(itinerary => itinerary.uid === uid)
-      console.log(test);
+      const userSpecificItineraries = itineraries.filter(itinerary => itinerary.uid === uid)
+      return <ItineraryWrapper itineraries={userSpecificItineraries} />
     } else {
 
     }
