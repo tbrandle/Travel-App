@@ -3,10 +3,12 @@ import * as actions from '../actions/actions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-
+const mapStateToProps = (state) => {
+  return state
+}
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators(actions, dispatch)
 }
 
-export default connect(null, mapDispatchToProps)(AddItinerary)
+export default connect(mapStateToProps, mapDispatchToProps)(AddItinerary)

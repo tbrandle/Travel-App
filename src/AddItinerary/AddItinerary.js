@@ -9,6 +9,7 @@ export default class AddItinerary extends Component{
   constructor(){
     super()
     this.state={
+      uid: '',
       id: Date.now(),
       title:'',
       description:'',
@@ -18,6 +19,10 @@ export default class AddItinerary extends Component{
       placeDescription:'',
       display:'none'
     }
+  }
+
+  componentDidMount(){
+    this.setState({ uid: this.props.currentUser.uid })
   }
 
   addMarker(marker){
@@ -67,6 +72,7 @@ export default class AddItinerary extends Component{
     database.ref('itineraries').push().set(this.state)
 
     this.setState({
+      uid:'',
       id: Date.now(),
       title:'',
       description:'',
