@@ -7,7 +7,7 @@ export default class NewUser extends Component {
     super();
     this.state={
       name:'',
-      email: '',
+      userEmail: '',
       password: '',
       error: ''
     }
@@ -15,15 +15,16 @@ export default class NewUser extends Component {
 
   newRegister () {
     const { history } = this.props
-    const { email, password, name } = this.state
+    const { userEmail, password, name } = this.state
     const updateErrorInState = (errorMessage) => { this.setState({ error: errorMessage }) }
 
-    auth.createUserWithEmailAndPassword(email, password)
+    auth.createUserWithEmailAndPassword(userEmail, password)
       .then(user => {
-        const { uid } = user
+        const { uid, email } = user
         const userObj = {
           [uid]: {
-            name: this.state.name
+            name: this.state.name,
+            email
           }
         }
         database.ref('users').push().set(userObj)
@@ -33,8 +34,8 @@ export default class NewUser extends Component {
       .catch(function(error) {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(errorMessage);
         updateErrorInState(errorMessage)
+        // need to display the errorMessage
       });
   }
 
@@ -42,7 +43,7 @@ export default class NewUser extends Component {
     return (
       <div>
         <input placeholder="name" type="text" onChange={(e)=> this.setState({name: e.target.value})} value={ this.state.name } />
-        <input placeholder="email" type="text" onChange={(e)=> this.setState({email: e.target.value})} value={ this.state.email } />
+        <input placeholder="email" type="text" onChange={(e)=> this.setState({userEmail: e.target.value})} value={ this.state.userEmail } />
         <input placeholder="password" type="password" onChange={(e)=> this.setState({password: e.target.value})} value={ this.state.password } />
         <button onClick={ () => this.newRegister() }>Submit</button>
       </div>

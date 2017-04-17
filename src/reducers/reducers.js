@@ -4,7 +4,7 @@ const initialUserState = {
   error: ''
 };
 
-export const user = (state = initialUserState, action) => {
+export const currentUser = (state = initialUserState, action) => {
   switch(action.type){
     case 'LOG_IN':
       return [...state, action.user];
