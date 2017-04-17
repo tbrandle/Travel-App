@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './AddItinerary.css'
 import GoogleInitialMap from '../GoogleMap/GoogleInitialMap'
+import { database } from '../database';
 
 
 
@@ -45,7 +46,6 @@ export default class AddItinerary extends Component{
     const { destinations } = this.state
     const newDestinations = destinations.filter(destination => destination !== obj)
     this.setState({ destinations: newDestinations })
-
   }
 
   renderDestinations(){
@@ -64,6 +64,8 @@ export default class AddItinerary extends Component{
 
   saveItinerary(){
     this.props.addItinerary(this.state)
+    database.ref('itineraries').push().set(this.state)
+
     this.setState({
       id: Date.now(),
       title:'',

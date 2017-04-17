@@ -9,6 +9,7 @@ export const logIn = (user) => {
 }
 
 export const addItinerary = (itinerary) => {
+  console.log("inside action");
   return {
     type: 'ADD_ITINERARY',
     itinerary

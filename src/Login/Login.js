@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link }             from 'react-router-dom';
 // import admin from "firebase-admin";
 import { database, auth } from '../database';
+import './Login.css';
 
 export default class Login extends Component {
 
@@ -42,16 +43,20 @@ export default class Login extends Component {
 
   render(){
     return (
-      <div>
-        <input type="text"
+      <div className="login-wrapper">
+        <input className="input"
+               placeholder="email"
+               type="text"
                value={ this.state.email }
                onChange={(e) =>  this.setState({ email: e.target.value }) }
                />
-        <input type="password"
+        <input className="input"
+               placeholder="password"
+               type="password"
                value={ this.state.password }
                onChange={(e) =>  this.setState({ password: e.target.value }) }
                />
-        <button onClick={ () => this.signIn() }>Submit</button>
+             <button className="btn" onClick={ () => this.signIn() }>Submit</button>
         <p>No account? <Link to='/register'>Register here.</Link></p>
 
       </div>

@@ -15,31 +15,27 @@ export default class NewUser extends Component {
 
   newRegister () {
     const { history } = this.props
-    const { email, password } = this.state
+    const { email, password, name } = this.state
+    const updateErrorInState = (errorMessage) => { this.setState({ error: errorMessage }) }
 
-    auth.createUserWithEmailAndPassword(email, password).catch(function(error) {
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      console.log(errorMessage);
-      this.setState({ error: 'error' });
-    });
-
-    auth.onAuthStateChanged(firebaseUser => {
-      if (firebaseUser) {
-        console.log(firebaseUser);
-        this.props.logIn(this.state)
+    auth.createUserWithEmailAndPassword(email, password)
+      .then(user => {
+        const { uid } = user
+        const userObj = {
+          [uid]: {
+            name: this.state.name
+          }
+        }
+        database.ref('users').push().set(userObj)
+        this.props.logIn(userObj)
         history.push('/')
-
-      } else {
-        console.log('not logged in');
-        this.setState({
-          email: '',
-          password: '',
-          name:'',
-          error: ''
-        })
-      }
-    })
+      })
+      .catch(function(error) {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorMessage);
+        updateErrorInState(errorMessage)
+      });
   }
 
   render(){
