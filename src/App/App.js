@@ -70,6 +70,7 @@ export default class App extends Component {
           currentUser={ this.props.currentUser }
           component={ ProfileContainer }
           />
+        
         <Route exact
                path='/view_itineraries'
                render={() => <ItineraryWrapper itineraries={this.props.itineraries}/>}
@@ -78,7 +79,7 @@ export default class App extends Component {
                render={({match}) => <SingleItineraryContainer match={match} /> }
                />
         <Route path='/add_itinerary'  component={ AddItineraryContainer } />
-        <Route path='/login'  component={ LoginContainer } />
+        <Route exact path='/login'  component={ LoginContainer } />
         <Route path='/register'  component={ NewUserContainer } />
       </div>
     );

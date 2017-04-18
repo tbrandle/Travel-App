@@ -32,7 +32,7 @@ export default class Login extends Component {
       .then(user => {
         const { uid, email } = user
         this.getFirebaseUserObject(uid)
-        history.push('/')
+        history.push('/view_itineraries')
       })
     .catch((error) => {
         console.log(error);
