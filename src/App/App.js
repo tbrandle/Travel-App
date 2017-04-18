@@ -66,10 +66,10 @@ export default class App extends Component {
     return (
       <div className="App">
         { this.toggleNavBar() }
-        <PrivateRoute path='/'
-                      currentUser={ this.props.currentUser }
-                      component={ ProfileContainer }
-                      />
+        <PrivateRoute exact path='/'
+          currentUser={ this.props.currentUser }
+          component={ ProfileContainer }
+          />
         <Route exact
                path='/view_itineraries'
                render={() => <ItineraryWrapper itineraries={this.props.itineraries}/>}
