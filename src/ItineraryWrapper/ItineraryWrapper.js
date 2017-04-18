@@ -16,7 +16,6 @@ const displayItineraries = (itineraries) =>{
 }
 
 const ItineraryWrapper = (props) => {
-  debugger;
   if (props.itineraries.length) {
     return (
       <div>

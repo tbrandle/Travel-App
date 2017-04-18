@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import { Link }             from 'react-router-dom';
+import { Link, Redirect }             from 'react-router-dom';
 import { database, auth } from '../database';
 import './Login.css';
-
-import PrivateRoute from '../PrivateRoute/PrivateRoute';
 
 
 export default class Login extends Component {
@@ -48,10 +46,16 @@ export default class Login extends Component {
     })
   }
 
+  redirect(){
+    if(Object.keys(this.props.currentUser).length) {
+      return <Redirect to='/' />
+    }
+  }
+
   render(){
     return (
       <div className="login-wrapper">
-        
+        { this.redirect() }
         <h1 className="logo">TravelMe</h1>
         <input className="input"
                placeholder="email"
