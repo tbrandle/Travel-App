@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import './AddItinerary.css'
 import GoogleInitialMap from '../GoogleMap/GoogleInitialMap';
 import Geosuggest from 'react-geosuggest';
-import { database } from '../database';
-
+import { database, storage } from '../database';
 
 export default class AddItinerary extends Component{
   constructor(){
@@ -35,7 +34,7 @@ export default class AddItinerary extends Component{
     this.setState({ markers: [ newMarker] })
   }
 
-  addDestinationField(){
+  addDestinationFields(){
     this.state.markers.length && this.setState({ display: 'flex' })
   }
 
@@ -67,11 +66,15 @@ export default class AddItinerary extends Component{
     })
   }
 
+  uploadFile(e){
+    const file = e.target.files[0]
+    const storageRef = storage.ref('itinerary_photos/'+ this.state.id.toString())
+    storageRef.put(file)
+  }
+
   saveItinerary(){
-    console.log("inside save itin");
     this.props.addItinerary(this.state)
     database.ref('itineraries').push().set(this.state)
-
     this.setState({
       id: Date.now(),
       title:'',
@@ -98,6 +101,9 @@ export default class AddItinerary extends Component{
              value={this.state.description}
              onChange={(e) => this.setState({  description: e.target.value }) }
              />
+
+           <input type="file" className="filebtn" onChange={(e)=> this.uploadFile(e)}/>
+
            <Geosuggest onSuggestSelect={suggest=> console.log(suggest)}/>
            <section className="destination-wrapper">
                <div className='add-map-container'>
@@ -126,7 +132,7 @@ export default class AddItinerary extends Component{
              <input className="ok-submit"
                     type="image"
                     src={require('../../images/plus.svg')}
-                    onClick={ () => this.addDestinationField() }
+                    onClick={ () => this.addDestinationFields() }
                    />
            </section>
            <section className="single-destination-wrapper">
