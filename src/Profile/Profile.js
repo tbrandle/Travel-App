@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ItineraryWrapper from '../ItineraryWrapper/ItineraryWrapper';
+import './Profile.css'
 
 
 export default class Profile extends Component {
@@ -25,8 +26,14 @@ export default class Profile extends Component {
   render(){
     return (
       <div>
-        <button onClick={()=> this.setState({render:'itineraries'})}>My Itineraries</button>
-        <button onClick={()=> this.setState({render:'wish-list'})}>Wish List</button>
+        <div className="pic-wrapper">
+          <img className="profile-pic" src={require('../../images/profile-placeholder.jpg')} />
+          <p className="user-name">{this.props.currentUser.name}</p>
+        </div>
+        <div className="btn-wrapper">
+          <button className="profile-btn" onClick={()=> this.setState({render:'itineraries'})}>My Itineraries</button>
+          <button className="profile-btn" onClick={()=> this.setState({render:'wish-list'})}>Wish List</button>
+        </div>
         { this.renderLists() }
       </div>
     )

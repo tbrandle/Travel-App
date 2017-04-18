@@ -1,0 +1,29 @@
+.view-wrapper{
+  border-bottom: 1px grey solid;
+
+}
+.view-img{
+
+}
+
+.view-title{
+  font-size: 20px;
+  color: grey;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: 700;
+}
+
+.view-description{
+  color: grey;
+}
+.itinerary-wrapper-view{
+  height: 100vh;
+  padding: 8px;
+  border: 2px #005fa0 solid;
+  overflow: scroll;
+}
+
+.read-more{
+  text-decoration: none;
+  color: grey;
+}

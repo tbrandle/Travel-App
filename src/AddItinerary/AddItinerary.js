@@ -129,18 +129,17 @@ export default class AddItinerary extends Component{
                      />
                 <button className="btn" onClick={() => this.addDestination()}>add destination</button>
              </div>
-             <input className="ok-submit"
-                    type="image"
-                    src={require('../../images/plus.svg')}
-                    onClick={ () => this.addDestinationFields() }
+               <input className="add-btn"
+                      type="image"
+                      src={require('../../images/plus.svg')}
+                      onClick={ () => this.addDestinationFields() }
                    />
            </section>
            <section className="single-destination-wrapper">
              {this.renderDestinations()}
            </section>
 
-
-         <button className="btn save-btn" onClick={()=> this.saveItinerary()}>save itinerary</button>
+           <button className="btn save-btn" onClick={()=> this.saveItinerary()}>save itinerary</button>
       </div>
     )
   }

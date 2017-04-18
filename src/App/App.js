@@ -41,10 +41,10 @@ export default class App extends Component {
     if (Object.keys(currentUser).length) {
       return (
         <header className="header">
-          <Link to='/' className="logo"><h1 className="logo">TravelMe</h1></Link>
-          <Link to='/view_itineraries' className="nav-item"><h1>view</h1></Link>
-          <Link to='/add_itinerary' className="nav-item"><h1>add</h1></Link>
-          <Link to='/login' className="nav-item"><button onClick={()=> this.signOut()}>Logout</button></Link>
+          <Link className='link' to='/' ><h1 className="logo">TravelMe</h1></Link>
+          <Link className='link' to='/view_itineraries'><h1 className="nav-item">view</h1></Link>
+          <Link className='link' to='/add_itinerary' ><h1 className="nav-item">add</h1></Link>
+          <Link className='link' to='/login'><button onClick={()=> this.signOut()}>Logout</button></Link>
         </header>
       )
     }
