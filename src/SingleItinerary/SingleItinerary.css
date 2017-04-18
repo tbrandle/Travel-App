@@ -18,7 +18,10 @@
   display: flex;
   flex-direction: column;
 }
+.itinerary-title{
+  font-weight: 700;
 
+}
 .render-destination-wrapper{
   padding: 0 16px;
 }
