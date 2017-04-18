@@ -21,14 +21,3 @@ export const itineraries = (state = [], action) => {
       return state;
   }
 }
-
-
-
-
-
-// const marker = [{
-//   position: {
-//     lat: 39.753222,
-//     lng: -104.987797
-//   }
-// }]
