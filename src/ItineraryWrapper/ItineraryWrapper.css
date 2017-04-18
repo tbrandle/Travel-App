@@ -1,6 +1,6 @@
 .view-wrapper{
   border-bottom: 1px grey solid;
-
+padding-bottom: 8px;
 }
 .view-img{
 
@@ -19,7 +19,7 @@
 .itinerary-wrapper-view{
   height: 100vh;
   padding: 8px;
-  border: 2px #005fa0 solid;
+  border: 2px #1eb4f0 solid;
   overflow: scroll;
 }
 

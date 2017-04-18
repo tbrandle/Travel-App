@@ -22,5 +22,10 @@
 }
 
 .profile-btn{
-
+  font-size: 18px;
+  border: 2px #1eb4f0 solid;
+  border-bottom: none;
+  padding: 4px 23px;
+  background-color: #1eb4f0;
+  color: white;
 }
