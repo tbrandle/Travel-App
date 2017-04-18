@@ -18,7 +18,8 @@
     "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
-    "react-scripts": "0.9.5"
+    "react-scripts": "0.9.5",
+    "selenium-webdriver": "^3.3.0"
   },
   "scripts": {
     "start": "react-scripts start",

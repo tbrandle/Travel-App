@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link }             from 'react-router-dom';
-// import admin from "firebase-admin";
 import { database, auth } from '../database';
 import './Login.css';
 
@@ -44,23 +43,12 @@ export default class Login extends Component {
       password: '',
       error: ''
     })
-
-    // database.ref('users').once('value', snap => {
-    //   const users = snap.val();
-    //   const userArr = []
-    //   userArr.push(users)
-      // const validEmail = users.filter(userObj => {
-      //   console.log(userObj.name)
-      //   console.log(userObj)
-      // })
-      // database.ref('user').update(this.state);
-    // })
-
   }
 
   render(){
     return (
       <div className="login-wrapper">
+        <h1 className="logo">TravelMe</h1>
         <input className="input"
                placeholder="email"
                type="text"
@@ -75,7 +63,6 @@ export default class Login extends Component {
                />
              <button className="btn" onClick={ () => this.signIn() }>Submit</button>
         <p>No account? <Link to='/register'>Register here.</Link></p>
-
       </div>
     )
   }

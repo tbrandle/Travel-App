@@ -18,7 +18,7 @@ export default class Profile extends Component {
       const userSpecificItineraries = itineraries.filter(itinerary => itinerary.uid === uid)
       return <ItineraryWrapper itineraries={userSpecificItineraries} />
     } else {
-
+      <div>Display wish list here</div>
     }
   }
 
