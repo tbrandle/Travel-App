@@ -3,6 +3,9 @@ import { Link }             from 'react-router-dom';
 import { database, auth } from '../database';
 import './Login.css';
 
+import PrivateRoute from '../PrivateRoute/PrivateRoute';
+
+
 export default class Login extends Component {
 
   constructor(){
@@ -32,7 +35,7 @@ export default class Login extends Component {
       .then(user => {
         const { uid, email } = user
         this.getFirebaseUserObject(uid)
-        history.push('/view_itineraries')
+        history.push('/')
       })
     .catch((error) => {
         console.log(error);
@@ -48,6 +51,7 @@ export default class Login extends Component {
   render(){
     return (
       <div className="login-wrapper">
+        
         <h1 className="logo">TravelMe</h1>
         <input className="input"
                placeholder="email"

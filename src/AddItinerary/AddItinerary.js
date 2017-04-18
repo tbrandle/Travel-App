@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './AddItinerary.css'
-import GoogleInitialMap from '../GoogleMap/GoogleInitialMap'
+import GoogleInitialMap from '../GoogleMap/GoogleInitialMap';
+import Geosuggest from 'react-geosuggest';
 import { database } from '../database';
 
 
@@ -132,6 +133,7 @@ export default class AddItinerary extends Component{
              {this.renderDestinations()}
            </section>
 
+           <Geosuggest />
          <button className="btn save-btn" onClick={()=> this.saveItinerary()}>save itinerary</button>
       </div>
     )

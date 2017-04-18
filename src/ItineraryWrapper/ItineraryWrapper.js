@@ -15,12 +15,12 @@ const displayItineraries = (itineraries) =>{
   })
 }
 
-const ItineraryWrapper = ({itineraries}) => {
-
-  if (itineraries.length) {
+const ItineraryWrapper = (props) => {
+  debugger;
+  if (props.itineraries.length) {
     return (
       <div>
-        {displayItineraries(itineraries)}
+        {displayItineraries(props.itineraries)}
       </div>
     )
   } else {

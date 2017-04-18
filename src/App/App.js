@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
-import { Link, Redirect } from 'react-router-dom';
-// import { Redirect } from 'react-router';
-
+import { Route, Link, Redirect } from 'react-router-dom';
 
 import './App.css';
 import LoginContainer from '../Login/LoginContainer';
@@ -11,20 +8,12 @@ import AddItineraryContainer from '../AddItinerary/AddItineraryContainer';
 import ItineraryWrapper from '../ItineraryWrapper/ItineraryWrapper';
 import SingleItineraryContainer from '../SingleItinerary/SingleItineraryContainer';
 import ProfileContainer from '../Profile/ProfileContainer';
+import PrivateRoute from '../PrivateRoute/PrivateRoute';
+
 import { database, auth } from '../database';
 
-const PrivateRoute = ({currentUser, component: Component, ...rest }) => (
-  <Route {...rest} render={props => (
-      Object.keys(currentUser).length ? (
-        <Component {...props}/>
-      ) : (
-        <Redirect to={{
-            pathname: '/login',
-            state: { from: props.location }
-          }}/>
-        )
-      )}/>
-    )
+
+
 
 export default class App extends Component {
 
@@ -61,26 +50,40 @@ export default class App extends Component {
     }
   }
 
+  // <Route exact
+  //   path='/view_itineraries'
+  //   render={() => this.redirect() }
+  //   />
 
   render() {
     return (
       <div className="App">
         { this.toggleNavBar() }
+
         <PrivateRoute exact path='/'
-          currentUser={ this.props.currentUser }
           component={ ProfileContainer }
+          currentUser={this.props.currentUser}
           />
-        
-        <Route exact
-               path='/view_itineraries'
-               render={() => <ItineraryWrapper itineraries={this.props.itineraries}/>}
-               />
-        <Route path='/view_itineraries/:id'
-               render={({match}) => <SingleItineraryContainer match={match} /> }
-               />
-        <Route path='/add_itinerary'  component={ AddItineraryContainer } />
+
+        <PrivateRoute exact path='/view_itineraries'
+          currentUser={ this.props.currentUser }
+          itineraries={this.props.itineraries}
+          component={ ItineraryWrapper }
+          />
+
+        <PrivateRoute exact path='/view_itineraries/:id'
+          currentUser={ this.props.currentUser }
+          component={ SingleItineraryContainer }
+          />
+
+        <PrivateRoute exact path='/add_itinerary'
+          currentUser={ this.props.currentUser }
+          component={ AddItineraryContainer }
+          />
+
         <Route exact path='/login'  component={ LoginContainer } />
         <Route path='/register'  component={ NewUserContainer } />
+
       </div>
     );
   }
