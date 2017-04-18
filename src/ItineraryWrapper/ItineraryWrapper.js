@@ -7,8 +7,8 @@ const displayItineraries = (itineraries) =>{
   return itineraries.map((itinerary, i) => {
     return (
       <div className="single-destination" key={i}>
-        <p>{itinerary.title}</p>
-        <p>{itinerary.description}</p>
+        <p className='single-destination-title'>{itinerary.title}</p>
+        <p className='single-destination-description'>{itinerary.description}</p>
         <Link to={`/view_itineraries/${itinerary.id}`}>read more</Link>
       </div>
     )
@@ -24,7 +24,7 @@ const ItineraryWrapper = ({itineraries}) => {
       </div>
     )
   } else {
-    return <div>There are no itineraries to view.</div>
+    return <div className='no-itineraries'>There are no itineraries to view.</div>
   }
 }
 
