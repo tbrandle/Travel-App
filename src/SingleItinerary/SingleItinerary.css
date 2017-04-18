@@ -1,5 +1,24 @@
 .single-map-container{
-  height: 400px;
+  position: relative;
+  /*top: -100px;*/
+  height: 300px;
   width: 100%;
   margin: auto;
+}
+
+.title-card{
+  box-shadow: 0px 0px 6px grey;
+  height: 115px;
+  border: 1px grey solid;
+  width: 69%;
+  margin: auto;
+  position: relative;
+  top: -52px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.render-destination-wrapper{
+  padding: 0 16px;
 }
