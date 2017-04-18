@@ -5,7 +5,6 @@ import Geosuggest from 'react-geosuggest';
 import { database } from '../database';
 
 
-
 export default class AddItinerary extends Component{
   constructor(){
     super()
@@ -99,6 +98,7 @@ export default class AddItinerary extends Component{
              value={this.state.description}
              onChange={(e) => this.setState({  description: e.target.value }) }
              />
+           <Geosuggest onSuggestSelect={suggest=> console.log(suggest)}/>
            <section className="destination-wrapper">
                <div className='add-map-container'>
                 <GoogleInitialMap containerElement={ <div style={{ height: "100%"}}/> }
@@ -133,7 +133,7 @@ export default class AddItinerary extends Component{
              {this.renderDestinations()}
            </section>
 
-           <Geosuggest />
+
          <button className="btn save-btn" onClick={()=> this.saveItinerary()}>save itinerary</button>
       </div>
     )

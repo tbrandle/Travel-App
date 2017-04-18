@@ -56,7 +56,8 @@ right: 0px;
   padding: 4px 14px;
 }
 
-.input{
+.input,
+.geosuggest__input{
   display: block;
   margin: 9px auto;
   padding: 7px;
@@ -92,4 +93,9 @@ right: 0px;
   margin: 6px;
   align-content: center;
   border-radius: 6px 6px;
+}
+
+/******** google places style ********/
+.geosuggest_input{
+
 }
