@@ -14,7 +14,6 @@ import ProfileContainer from '../Profile/ProfileContainer';
 import { database, auth } from '../database';
 
 const PrivateRoute = ({currentUser, component: Component, ...rest }) => (
-
   <Route {...rest} render={props => (
       Object.keys(currentUser).length ? (
         <Component {...props}/>
@@ -53,8 +52,8 @@ export default class App extends Component {
     if (Object.keys(currentUser).length) {
       return (
         <header className="header">
-          <Link to='/view_itineraries' className="nav-item"><h1>view</h1></Link>
           <Link to='/' className="logo"><h1 className="logo">TravelMe</h1></Link>
+          <Link to='/view_itineraries' className="nav-item"><h1>view</h1></Link>
           <Link to='/add_itinerary' className="nav-item"><h1>add</h1></Link>
           <Link to='/login' className="nav-item"><button onClick={()=> this.signOut()}>Logout</button></Link>
         </header>
@@ -67,8 +66,10 @@ export default class App extends Component {
     return (
       <div className="App">
         { this.toggleNavBar() }
-        <PrivateRoute path='/' currentUser={ this.props.currentUser } component={ ProfileContainer } />
-
+        <PrivateRoute path='/'
+                      currentUser={ this.props.currentUser }
+                      component={ ProfileContainer }
+                      />
         <Route exact
                path='/view_itineraries'
                render={() => <ItineraryWrapper itineraries={this.props.itineraries}/>}
