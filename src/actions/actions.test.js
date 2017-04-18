@@ -1,6 +1,5 @@
 import configureMockStore from 'redux-mock-store';
 import * as actions from './actions';
-// import mockMovies from '../helpers/newMoviesStub.json';
 
 const store = configureMockStore()();
 

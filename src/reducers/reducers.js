@@ -14,7 +14,7 @@ export const currentUser = (state = {}, action) => {
 export const itineraries = (state = [], action) => {
   switch(action.type){
     case 'ADD_ITINERARY':
-      return [...action.itinerary];
+      return [action.itinerary];
     case 'RETRIEVE':
       return [...state, action.itinerary];
     default:
