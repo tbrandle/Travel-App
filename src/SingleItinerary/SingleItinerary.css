@@ -20,7 +20,25 @@
 }
 .itinerary-title{
   font-weight: 700;
+  margin: 4px;
+font-size: 24px;
+}
 
+.itinerary-description{
+  margin: 0;
+}
+.heart-img{
+  height: 20px;
+}
+.likes{
+  margin: 0;
+  color: #da1034;
+  position: absolute;
+top: -3px;
+right: -11px;
+}
+.likes-wrapper{
+  position: relative;
 }
 .render-destination-wrapper{
   padding: 0 16px;
