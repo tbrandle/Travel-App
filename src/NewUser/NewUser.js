@@ -26,11 +26,17 @@ export default class NewUser extends Component {
             [uid]:{
               name: this.state.name,
               email,
-              uid
+              uid,
+              wishlist:[]
             }
           }
           database.ref('users').update(userObj)
-          this.props.logIn(userObj)
+          this.props.logIn({
+            name: this.state.name,
+            email,
+            uid,
+            wishlist:[]
+          })
           history.push('/')
 
       })
@@ -46,11 +52,13 @@ export default class NewUser extends Component {
     return (
       <div className='login-wrapper'>
         <h1 className="logo">TravelMe</h1>
-        
+
         <input className='input' placeholder="name" type="text" onChange={(e)=> this.setState({name: e.target.value})} value={ this.state.name } />
         <input className='input' placeholder="email" type="text" onChange={(e)=> this.setState({userEmail: e.target.value})} value={ this.state.userEmail } />
         <input className='input' placeholder="password" type="password" onChange={(e)=> this.setState({password: e.target.value})} value={ this.state.password } />
         <button className='btn' onClick={ () => this.newRegister() }>Submit</button>
+        <div className="errorMessage">{this.state.error}</div>
+
       </div>
     )
   }

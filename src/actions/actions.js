@@ -1,7 +1,6 @@
-import database from '../database';
 
 export const logIn = (user) => {
-
+  console.log(user);
   return {
     type: 'LOG_IN',
     user
@@ -24,5 +23,12 @@ export const retrieveItineraries = (itinerary) => {
   return {
     type: 'RETRIEVE',
     itinerary
+  }
+}
+
+export const addToWishList =(newUser) => {
+  return {
+    type:'UPDATE_USER',
+    newUser
   }
 }
