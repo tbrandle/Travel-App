@@ -32,3 +32,10 @@ export const addToWishList =(newUser) => {
     newUser
   }
 }
+
+export const updateItinerary =(itineraries) =>{
+  return {
+    type:'UPDATE_ITINERARY',
+    itineraries
+  }
+}

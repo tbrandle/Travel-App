@@ -21,6 +21,8 @@ export const itineraries = (state = [], action) => {
       return [action.itinerary];
     case 'RETRIEVE':
       return [...state, action.itinerary];
+    case 'UPDATE_ITINERARY':
+      return action.itineraries
     default:
       return state;
   }
