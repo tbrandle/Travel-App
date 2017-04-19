@@ -75,7 +75,7 @@ export default class Login extends Component {
                />
              <button className="btn" onClick={ () => this.signIn() }>Submit</button>
         <p>No account? <Link to='/register'>Register here.</Link></p>
-        <div>{this.state.error}</div>
+        <div className="errorMessage">{this.state.error}</div>
       </div>
     )
   }

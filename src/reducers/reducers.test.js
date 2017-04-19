@@ -68,7 +68,7 @@ describe('itineraries reducer', () => {
   it('should return to an itinerary object when action is RETRIEVE', () => {
     expect(itineraries(undefined, {
       type: 'RETRIEVE',
-      itinerary:mockItinerary
+      itinerary: mockItinerary
     })).toEqual([mockItinerary]);
   });
 });
