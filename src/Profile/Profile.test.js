@@ -35,7 +35,6 @@ describe('ItineraryWrapper', () => {
     myItinerariesBtn.simulate('click');
 
     expect(ProfileComponent.find('.view-wrapper')).toHaveLength(2)
-
   })
 
   it('on click of wish list btn, it should change state.render to wish-list', ()=>{
@@ -48,7 +47,12 @@ describe('ItineraryWrapper', () => {
   })
 
   it('On click of wish-list button, it should render favorites', ()=>{
+    const ProfileComponent = shallow(<Profile itineraries={mockItineraries} currentUser={mockUser}/>)
+    const myItinerariesBtn = ProfileComponent.find('.my-itineraries');
 
+    myItinerariesBtn.simulate('click');
+
+    expect(ProfileComponent.find('.view-wrapper')).toHaveLength(2)
   })
 
 })

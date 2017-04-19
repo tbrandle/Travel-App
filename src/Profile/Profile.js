@@ -21,12 +21,6 @@ export default class Profile extends Component {
   renderWishList(){
     const { itineraries, currentUser:{wishlist}} = this.props
     const newWishList = itineraries.filter(itinerary => wishlist.includes(itinerary.id))
-    console.log(newWishList);
-
-    // const newWishList = wishlist.forEach(id=> {
-    //   return itineraries.filter(itinerary => itinerary.id === id)
-    // })
-    console.log(newWishList);
     return <ItineraryWrapper itineraries={newWishList} />
   }
 

@@ -1,9 +1,14 @@
 .view-wrapper{
   border-bottom: 1px grey solid;
-padding-bottom: 8px;
+  padding-bottom: 8px;
+  margin-bottom:22px
 }
-.view-img{
 
+.view-img{
+  background-image: url('../../images/blue_bear.jpg');
+  background-size: cover;
+  width: 100%;
+  height:180px;
 }
 
 .view-title{
@@ -18,7 +23,7 @@ padding-bottom: 8px;
 }
 .itinerary-wrapper-view{
   height: 100vh;
-  padding: 8px;
+  padding: 30px;
   border: 2px #1eb4f0 solid;
   overflow: scroll;
 }

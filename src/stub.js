@@ -1,7 +1,8 @@
 const mockUser = {
   email:"j@gmail.com",
   name:"jay",
-  uid:"F8bqpTEph1UMR4WRsXS092G3kUO2"
+  uid:"F8bqpTEph1UMR4WRsXS092G3kUO2",
+  wishlist: [1492470172298,1492475474645]
 }
 
 const mockItinerary = {
@@ -69,7 +70,7 @@ const mockItineraries = [
         }
       ],
      display:"none",
-     id:1492470172292,
+     id:1492475474645,
      place:"",
      placeDescription:"",
      title:"jay",
@@ -92,7 +93,7 @@ const mockItineraries = [
          }
        ],
       display:"none",
-      id:1492470172295,
+      id:1492548701166,
       place:"",
       placeDescription:"",
       title:"museum tour",
