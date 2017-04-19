@@ -9,7 +9,8 @@ const displayItineraries = (itineraries) =>{
   return itineraries.map((itinerary, i) => {
     return (
       <div className='view-wrapper' key={i}>
-        <img className='view-img' src={require('../../images/profile-placeholder.jpg')}/>        <p className='view-title'>{itinerary.title}</p>
+        <div className='view-img'></div>
+        <p className='view-title'>{itinerary.title}</p>
         <p className='view-description'>{itinerary.description}</p>
         <Link className="read-more" to={`/view_itineraries/${itinerary.id}`}>read more</Link>
       </div>

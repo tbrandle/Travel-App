@@ -1,10 +1,10 @@
-.login-wrapper{
-  display: flex;
-  flex-direction: column;
-  border: 2px #005fa0 solid;
-  margin: 67px auto;
-  height: 317px;
-  max-width: 40%;
-  min-width: 306px;
-  padding: 20px;
+.login-wrapper {
+  display        : flex;
+  min-width      : 306px;
+  max-width      : 40%;
+  height         : 317px;
+  margin         : 67px auto;
+  padding        : 20px;
+  border         : 2px #005fa0 solid;
+  flex-direction : column;
 }

@@ -1,6 +1,5 @@
 
 export const logIn = (user) => {
-  console.log(user);
   return {
     type: 'LOG_IN',
     user
@@ -30,5 +29,12 @@ export const addToWishList =(newUser) => {
   return {
     type:'UPDATE_USER',
     newUser
+  }
+}
+
+export const updateItinerary =(itineraries) =>{
+  return {
+    type:'UPDATE_ITINERARY',
+    itineraries
   }
 }

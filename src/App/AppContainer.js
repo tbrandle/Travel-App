@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 const mapStateToProps = (state) => {
-  console.log("mapStateToProps App");
   return state
 }
 

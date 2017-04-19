@@ -1,34 +1,5 @@
 import { currentUser, itineraries } from './reducers';
-
-const mockUser = {
-  email:"j@gmail.com",
-  name:"jay",
-  uid:"F8bqpTEph1UMR4WRsXS092G3kUO2"
-}
-
-const mockItinerary = {
-  description: "jay",
-  destinations:[
-      {
-        markers:[
-          {
-            position:{
-              lat: 39.725646102034084,
-              lng:-104.9307632446289
-            }
-          }
-        ],
-        place:"asdf",
-        placeDescription:"asdf"
-      }
-    ],
-   display:"none",
-   id:1492470172298,
-   place:"",
-   placeDescription:"",
-   title:"jay",
-   uid:"F8bqpTEph1UMR4WRsXS092G3kUO2"
-  }
+import { mockUser, mockItinerary } from '../stub.js';
 
 describe('currentUser reducer', () => {
 

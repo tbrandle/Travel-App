@@ -14,6 +14,7 @@ export default class AddItinerary extends Component{
       description:'',
       destinations: [],
       markers:[],
+      likes: 0,
       place:'',
       placeDescription:'',
       display:'none'
@@ -84,6 +85,7 @@ export default class AddItinerary extends Component{
       place:'',
       placeDescription:''
     })
+    this.props.history.push('/view_itineraries')
   }
 
   render(){

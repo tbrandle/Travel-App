@@ -3,7 +3,6 @@
 export const currentUser = (state = {}, action) => {
   switch(action.type){
     case 'LOG_IN':
-    console.log(action.user);
       return action.user
       // Object.assign({}, state, action.user );
     case 'LOG_OUT':
@@ -21,6 +20,8 @@ export const itineraries = (state = [], action) => {
       return [action.itinerary];
     case 'RETRIEVE':
       return [...state, action.itinerary];
+    case 'UPDATE_ITINERARY':
+      return action.itineraries
     default:
       return state;
   }

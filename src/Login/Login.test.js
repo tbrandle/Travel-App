@@ -1,20 +1,22 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import fetchMock from 'fetch-mock';
+import MockFirebase from 'mockfirebase';
 
 import Login from './Login';
 
 describe('Login Component', ()=>{
 
-  const LoginComponent = shallow(<Login signIn={jest.fn()} />)
 
-  afterEach(()=> {
-    expect(fetchMock.calls().unmatched).toEqual([]);
-    fetchMock.restore();
-  })
+  // afterEach(()=> {
+  //   expect(fetchMock.calls().unmatched).toEqual([]);
+  //   fetchMock.restore();
+  // })
 
-  it('should expect an error message if invalid email', async (done) => {
-    fetchMock.post('https://travel-app-sch-1491500719051.firebaseio.com', {code: "auth/invalid-email", message: "The email address is badly formatted."});
+  it('should expect an error message if invalid email', () => {
+
+    const LoginComponent = shallow(<Login />)
+
+    // fetchMock.post('https://travel-app-sch-1491500719051.firebaseio.com', {code: "auth/invalid-email", message: "The email address is badly formatted."});
      let emailInput = LoginComponent.find('input[name="email"]');
      let submitButton = LoginComponent.find('button');
 
