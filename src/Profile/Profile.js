@@ -31,8 +31,8 @@ export default class Profile extends Component {
           <p className="user-name">{this.props.currentUser.name}</p>
         </div>
         <div className="btn-wrapper">
-          <button className="profile-btn" onClick={()=> this.setState({render:'itineraries'})}>My Itineraries</button>
-          <button className="profile-btn" onClick={()=> this.setState({render:'wish-list'})}>Wish List</button>
+          <button className="profile-btn my-itineraries" onClick={()=> this.setState({render:'itineraries'})}>My Itineraries</button>
+          <button className="profile-btn my-wish-list" onClick={()=> this.setState({render:'wish-list'})}>Wish List</button>
         </div>
         { this.renderLists() }
       </div>

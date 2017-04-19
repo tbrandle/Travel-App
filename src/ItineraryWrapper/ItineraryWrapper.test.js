@@ -1,31 +1,7 @@
 import ItineraryWrapper from './ItineraryWrapper';
 import React from 'react';
 import { shallow } from 'enzyme';
-
-const mockItinerary = {
-    description: "jay",
-    destinations:[
-        {
-          markers:[
-            {
-              position:{
-                lat: 39.725646102034084,
-                lng:-104.9307632446289
-              }
-            }
-          ],
-          place:"asdf",
-          placeDescription:"asdf"
-        }
-      ],
-     display:"none",
-     id:1492470172298,
-     place:"",
-     placeDescription:"",
-     title:"jay",
-     uid:"F8bqpTEph1UMR4WRsXS092G3kUO2"
-   }
-
+import { mockItinerary, mockItineraries } from '../stub.js';
 
 describe('ItineraryWrapper', () => {
 
@@ -35,15 +11,13 @@ describe('ItineraryWrapper', () => {
   })
 
   it('should map through the itineraries props and display a div with className"view-wrapper" if props has length of 1', ()=>{
-    const singleMockArray = [mockItinerary]
-    const ItineraryWrapperComponent = shallow(<ItineraryWrapper itineraries={singleMockArray}/>)
+    const ItineraryWrapperComponent = shallow(<ItineraryWrapper itineraries={[mockItinerary]}/>)
     expect(ItineraryWrapperComponent.find('.view-wrapper')).toHaveLength(1)
   })
 
   it('should map through the itineraries props and display a div with className"view-wrapper" for each if props has length greater than 1', ()=>{
-    const doubleMockArray = [mockItinerary, mockItinerary]
-    const ItineraryWrapperComponent = shallow(<ItineraryWrapper itineraries={doubleMockArray}/>)
-    expect(ItineraryWrapperComponent.find('.view-wrapper')).toHaveLength(2)
+    const ItineraryWrapperComponent = shallow(<ItineraryWrapper itineraries={mockItineraries}/>)
+    expect(ItineraryWrapperComponent.find('.view-wrapper')).toHaveLength(3)
   })
 
 })
