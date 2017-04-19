@@ -8,18 +8,32 @@ export default class Profile extends Component {
   constructor(){
     super()
     this.state={
-      render: 'itineraries'
+      render: 'itineraries',
+      userSpecificItineraries: [],
+      totalLikes:0
     }
   }
 
-  renderItineraryList(){
-    const { itineraries, currentUser:{ uid }} = this.props
+  componentDidMount(){
+    const { itineraries, currentUser:{uid} } = this.props
     const userSpecificItineraries = itineraries.filter(itinerary => itinerary.uid === uid)
-    return <ItineraryWrapper itineraries={userSpecificItineraries} />
+    this.addTotalLikesToProfile(userSpecificItineraries)
+    this.setState({ userSpecificItineraries })
+  }
+
+  addTotalLikesToProfile(itineraryArray){
+    const totalLikes = itineraryArray.reduce((sum, itin) => {
+      return sum += itin.likes
+    },0) || 0
+    this.setState({ totalLikes })
+  }
+
+  renderItineraryList(){
+    return <ItineraryWrapper itineraries={this.state.userSpecificItineraries} />
   }
 
   renderWishList(){
-    const { itineraries, currentUser:{wishlist}} = this.props
+    const { itineraries, currentUser:{wishlist} } = this.props
     const newWishList = itineraries.filter(itinerary => wishlist.includes(itinerary.id))
     return <ItineraryWrapper itineraries={newWishList} />
   }
@@ -30,6 +44,10 @@ export default class Profile extends Component {
         <div className="pic-wrapper">
           <img className="profile-pic" src={this.props.currentUser.photo || require('../../images/profile-placeholder.jpg')} />
           <p className="user-name">{this.props.currentUser.name}</p>
+          <div className="likes-wrapper">
+            <img className="heart-img" src={(require('../../images/heart.svg'))} />
+            <p className="likes">+{this.state.totalLikes}</p>
+          </div>
         </div>
         <div className="btn-wrapper">
           <button className="profile-btn my-itineraries" onClick={()=> this.setState({render:'itineraries'})}>My Itineraries</button>
