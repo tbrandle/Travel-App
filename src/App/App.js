@@ -13,8 +13,6 @@ import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import { database, auth } from '../database';
 
 
-
-
 export default class App extends Component {
 
   componentDidMount(){
@@ -25,6 +23,13 @@ export default class App extends Component {
         console.log("The read failed: " + errorObject.code);
       });
   }
+  //
+  // componentWillReceiveProps(nextProps){
+  //   const updatedUser = nextProps.currentUser
+  //   const uid = updatedUser.uid
+  //   database.ref('users').update({[uid]:updatedUser})
+  //
+  // }
 
   signOut(){
     auth.signOut().then(function() {
@@ -50,11 +55,6 @@ export default class App extends Component {
     }
   }
 
-  // <Route exact
-  //   path='/view_itineraries'
-  //   render={() => this.redirect() }
-  //   />
-
   render() {
     return (
       <div className="App">
@@ -71,14 +71,14 @@ export default class App extends Component {
           component={ ItineraryWrapper }
           />
 
-        <PrivateRoute exact path='/view_itineraries/:id'
-          currentUser={ this.props.currentUser }
-          component={ SingleItineraryContainer }
-          />
-
         <PrivateRoute exact path='/add_itinerary'
           currentUser={ this.props.currentUser }
           component={ AddItineraryContainer }
+          />
+
+        <PrivateRoute exact path='/view_itineraries/:id'
+          currentUser={ this.props.currentUser }
+          component={ SingleItineraryContainer }
           />
 
         <Route exact path='/login'  component={ LoginContainer } />

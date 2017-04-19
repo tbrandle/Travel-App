@@ -6,6 +6,9 @@ export const currentUser = (state = {}, action) => {
       return action.user;
     case 'LOG_OUT':
       return {};
+    case 'UPDATE_USER':
+      return Object.assign({}, state, action.newUser )
+      // return [...state.wishlist, { wishlist:[action.wishlist] }];
     default:
       return state;
   }
