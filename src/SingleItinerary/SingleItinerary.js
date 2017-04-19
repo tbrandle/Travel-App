@@ -38,7 +38,8 @@ export default class SingleItinerary extends Component {
    if (this.props.currentUser.wishlist && this.props.currentUser.wishlist.includes(id)) {
      return
    }
-    const newWishList = this.props.currentUser.wishlist ? [...this.props.currentUser.wishlist, id] : [id]
+    const temp = this.props.currentUser.wishlist ? [...this.props.currentUser.wishlist, id] : [id]
+    const newWishList = temp.filter(id=> id)
     const newUser = Object.assign({}, this.props.currentUser, {wishlist:newWishList})
     this.props.addToWishList(newUser)
     console.log(newUser);
