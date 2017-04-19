@@ -19,6 +19,11 @@
     "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
+    "chai": "^3.5.0",
+    "enzyme": "^2.8.2",
+    "fetch-mock": "^5.10.0",
+    "mocha": "^3.2.0",
+    "mocha-loader": "^1.1.0",
     "react-scripts": "0.9.5",
     "selenium-webdriver": "^3.3.0"
   },
@@ -26,6 +31,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "selenium": "mocha"
   }
 }

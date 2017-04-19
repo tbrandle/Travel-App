@@ -27,7 +27,7 @@ export default class Profile extends Component {
     return (
       <div>
         <div className="pic-wrapper">
-          <img className="profile-pic" src={this.props.currentUser.photo ||require('../../images/profile-placeholder.jpg')} />
+          <img className="profile-pic" src={this.props.currentUser.photo || require('../../images/profile-placeholder.jpg')} />
           <p className="user-name">{this.props.currentUser.name}</p>
         </div>
         <div className="btn-wrapper">

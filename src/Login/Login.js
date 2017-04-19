@@ -29,6 +29,7 @@ export default class Login extends Component {
   signIn () {
     const { email, password } = this.state
     const { history } = this.props
+    const setErrorState = (error) => this.setState({ error })
     auth.signInWithEmailAndPassword(email, password)
       .then(user => {
         const { uid, email } = user
@@ -36,6 +37,7 @@ export default class Login extends Component {
         history.push('/')
       })
     .catch((error) => {
+        setErrorState(error.message)
         console.log(error);
       });
 
@@ -59,18 +61,21 @@ export default class Login extends Component {
         <h1 className="logo">TravelMe</h1>
         <input className="input"
                placeholder="email"
+               name="email"
                type="text"
                value={ this.state.email }
                onChange={(e) =>  this.setState({ email: e.target.value }) }
                />
         <input className="input"
                placeholder="password"
+               name="password"
                type="password"
                value={ this.state.password }
                onChange={(e) =>  this.setState({ password: e.target.value }) }
                />
              <button className="btn" onClick={ () => this.signIn() }>Submit</button>
         <p>No account? <Link to='/register'>Register here.</Link></p>
+        <div>{this.state.error}</div>
       </div>
     )
   }

@@ -2,7 +2,6 @@ import React from 'react';
 import GoogleInitialMap from '../GoogleMap/GoogleInitialMap';
 import './SingleItinerary.css';
 
-
 const renderDestinations = (destinations) => {
   return destinations.map((obj, i) => {
     console.log(obj);

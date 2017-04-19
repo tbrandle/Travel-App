@@ -34,7 +34,7 @@ const mockItinerary = {
   }
 
 
-describe('LogIn actions', () => {
+describe.only('LogIn actions', () => {
 
   afterEach(() => {
     store.clearActions();

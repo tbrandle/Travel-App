@@ -1,9 +1,6 @@
-// import configureMockStore from 'redux-mock-store';
 import ItineraryWrapper from './ItineraryWrapper';
 import React from 'react';
 import { shallow } from 'enzyme';
-import fetchMock from 'fetch-mock';
-import { browserHistory } from 'react-router';
 
 const mockItinerary = {
     description: "jay",
@@ -37,16 +34,16 @@ describe('ItineraryWrapper', () => {
     expect(ItineraryWrapperComponent.find('.no-itineraries')).toHaveLength(1)
   })
 
-  it('should map through the itineraries props and display a div with className"single-destination" if props has length of 1', ()=>{
+  it('should map through the itineraries props and display a div with className"view-wrapper" if props has length of 1', ()=>{
     const singleMockArray = [mockItinerary]
     const ItineraryWrapperComponent = shallow(<ItineraryWrapper itineraries={singleMockArray}/>)
-    expect(ItineraryWrapperComponent.find('.single-destination')).toHaveLength(1)
+    expect(ItineraryWrapperComponent.find('.view-wrapper')).toHaveLength(1)
   })
 
-  it('should map through the itineraries props and display a div with className"single-destination" for each if props has length greater than 1', ()=>{
+  it('should map through the itineraries props and display a div with className"view-wrapper" for each if props has length greater than 1', ()=>{
     const doubleMockArray = [mockItinerary, mockItinerary]
     const ItineraryWrapperComponent = shallow(<ItineraryWrapper itineraries={doubleMockArray}/>)
-    expect(ItineraryWrapperComponent.find('.single-destination')).toHaveLength(2)
+    expect(ItineraryWrapperComponent.find('.view-wrapper')).toHaveLength(2)
   })
 
 })
