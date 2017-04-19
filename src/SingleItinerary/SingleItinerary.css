@@ -30,13 +30,18 @@ font-size: 24px;
 .heart-img{
   height: 20px;
 }
+.btn-wrapper{
+  display: flex;
+  justify-content: space-around;
+}
 .likes{
   margin: 0;
-  color: #da1034;
+  color: grey;
   position: absolute;
-top: -3px;
-right: -11px;
+  top: -3px;
+    right: -15px;
 }
+
 .likes-wrapper{
   position: relative;
 }

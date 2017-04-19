@@ -76,8 +76,10 @@ export default class SingleItinerary extends Component {
             </div>
             <p className='itinerary-description'>{itinerary.description}</p>
           </div>
-          <button className="btn" onClick={() => this.addLike(itinerary)}>like</button>
-          <button className="btn" onClick={() => this.handleClick(id) }>add to wish list</button>
+          <div className="btn-wrapper">
+            <button className="btn" onClick={() => this.addLike(itinerary)}>like</button>
+            <button className="btn" onClick={() => this.handleClick(id) }>add to wish list</button>
+          </div>
           <div className="render-destination-wrapper">
             { this.renderDestinations(itinerary.destinations) }
           </div>
