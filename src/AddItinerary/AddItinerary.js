@@ -84,6 +84,7 @@ export default class AddItinerary extends Component{
       place:'',
       placeDescription:''
     })
+    this.props.history.push('/view_itineraries')
   }
 
   render(){
