@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import GoogleInitialMap from '../GoogleMap/GoogleInitialMap';
+import { database } from '../database';
 import './SingleItinerary.css';
 
 
@@ -24,7 +25,7 @@ export default class SingleItinerary extends Component {
     const newUser = Object.assign({}, this.props.currentUser, {wishlist:newWishList})
     console.log(newUser);
     this.props.addToWishList(newUser)
-    // database.ref('users').update()
+    database.ref('users').update({[this.props.currentUser.uid]:newUser})
     // need to add id to wishlist array in currentUser
     //createreduce
     // update currentUser object in firebase
