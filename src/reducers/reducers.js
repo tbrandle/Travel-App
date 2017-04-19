@@ -3,7 +3,6 @@
 export const currentUser = (state = {}, action) => {
   switch(action.type){
     case 'LOG_IN':
-    console.log(action.user);
       return action.user
       // Object.assign({}, state, action.user );
     case 'LOG_OUT':

@@ -34,14 +34,14 @@ export default class SingleItinerary extends Component {
     })
   }
 
- handleClick(id){
+ handleWishListClick(id){
    if (this.props.currentUser.wishlist && this.props.currentUser.wishlist.includes(id)) {
-     console.log("duplicate");
      return
    }
     const newWishList = this.props.currentUser.wishlist ? [...this.props.currentUser.wishlist, id] : [id]
     const newUser = Object.assign({}, this.props.currentUser, {wishlist:newWishList})
     this.props.addToWishList(newUser)
+    console.log(newUser);
     database.ref('users').update({[this.props.currentUser.uid]:newUser})
   }
 
@@ -56,9 +56,7 @@ export default class SingleItinerary extends Component {
   }
 
   render(){
-    // const { addToWishList } = this.props
     const { itinerary, itinerary:{destinations}, itinerary:{id} } = this.state
-    // debugger
     if (destinations) {
        return (
         <div>
@@ -78,7 +76,7 @@ export default class SingleItinerary extends Component {
           </div>
           <div className="btn-wrapper">
             <button className="btn" onClick={() => this.addLike(itinerary)}>like</button>
-            <button className="btn" onClick={() => this.handleClick(id) }>add to wish list</button>
+            <button className="btn" onClick={() => this.handleWishListClick(id) }>add to wish list</button>
           </div>
           <div className="render-destination-wrapper">
             { this.renderDestinations(itinerary.destinations) }
