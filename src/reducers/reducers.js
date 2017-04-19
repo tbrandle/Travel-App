@@ -3,12 +3,13 @@
 export const currentUser = (state = {}, action) => {
   switch(action.type){
     case 'LOG_IN':
-      return action.user;
+    console.log(action.user);
+      return action.user
+      // Object.assign({}, state, action.user );
     case 'LOG_OUT':
       return {};
     case 'UPDATE_USER':
       return Object.assign({}, state, action.newUser )
-      // return [...state.wishlist, { wishlist:[action.wishlist] }];
     default:
       return state;
   }

@@ -19,16 +19,14 @@ export default class SingleItinerary extends Component {
 
 
  handleClick(id){
-   debugger
-
+   if (this.props.currentUser.wishlist && this.props.currentUser.wishlist.includes(id)) {
+     console.log("duplicate");
+     return
+   }
     const newWishList = this.props.currentUser.wishlist ? [...this.props.currentUser.wishlist, id] : [id]
     const newUser = Object.assign({}, this.props.currentUser, {wishlist:newWishList})
-    console.log(newUser);
     this.props.addToWishList(newUser)
     database.ref('users').update({[this.props.currentUser.uid]:newUser})
-    // need to add id to wishlist array in currentUser
-    //createreduce
-    // update currentUser object in firebase
   }
 
 

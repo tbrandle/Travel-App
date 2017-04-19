@@ -1,5 +1,6 @@
 
 export const logIn = (user) => {
+  console.log(user);
   return {
     type: 'LOG_IN',
     user
