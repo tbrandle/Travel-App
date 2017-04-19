@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
-import { Link }             from 'react-router-dom';
+import { Route, Link, Redirect } from 'react-router-dom';
 
 import './App.css';
 import LoginContainer from '../Login/LoginContainer';
@@ -8,25 +7,23 @@ import NewUserContainer from '../NewUser/NewUserContainer';
 import AddItineraryContainer from '../AddItinerary/AddItineraryContainer';
 import ItineraryWrapper from '../ItineraryWrapper/ItineraryWrapper';
 import SingleItineraryContainer from '../SingleItinerary/SingleItineraryContainer';
+import ProfileContainer from '../Profile/ProfileContainer';
+import PrivateRoute from '../PrivateRoute/PrivateRoute';
+
 import { database, auth } from '../database';
 
-  // import GoogleMapReact from 'google-map-react';
+
+
 
 export default class App extends Component {
 
-  // if there is no this.state.user is empty, render Login
-  // once logged in, if user interests is empty, render interests component
-  // if there is a user with interests, render home page
-  // database.ref('itineraries').push().set(this.state)
-
-
   componentDidMount(){
-    database.ref('itineraries').on("value", (snapshot) => {
-      const itineraries = snapshot.val()
-      Object.keys(itineraries).map(key => this.props.addItinerary(itineraries[key]));
-    }, function (errorObject) {
-      console.log("The read failed: " + errorObject.code);
-    });
+      database.ref('itineraries').on("value", (snapshot) => {
+        const itineraries = snapshot.val()
+        Object.keys(itineraries).map(key => this.props.retrieveItineraries(itineraries[key]));
+      }, function (errorObject) {
+        console.log("The read failed: " + errorObject.code);
+      });
   }
 
   signOut(){
@@ -39,33 +36,55 @@ export default class App extends Component {
     this.props.logOut()
   }
 
+  toggleNavBar(){
+    const {currentUser} = this.props
+    if (Object.keys(currentUser).length) {
+      return (
+        <header className="header">
+          <Link className='link' to='/' ><h1 className="logo">TravelMe</h1></Link>
+          <Link className='link' to='/view_itineraries'><h1 className="nav-item">view</h1></Link>
+          <Link className='link' to='/add_itinerary' ><h1 className="nav-item">add</h1></Link>
+          <Link className='link' to='/login'><button onClick={()=> this.signOut()}>Logout</button></Link>
+        </header>
+      )
+    }
+  }
+
+  // <Route exact
+  //   path='/view_itineraries'
+  //   render={() => this.redirect() }
+  //   />
+
   render() {
     return (
       <div className="App">
-        <header className="header">
-          <Link to='/' className="logo"><h1 className="logo">TravelMe</h1></Link>
-          <Link to='/view_itineraries' className="nav-item"><h1>view</h1></Link>
-          <Link to='/add_itinerary' className="nav-item"><h1>add</h1></Link>
-          <Link to='/login' className="nav-item"><button onClick={()=> this.signOut()}>Logout</button></Link>
+        { this.toggleNavBar() }
 
-        </header>
+        <PrivateRoute exact path='/'
+          component={ ProfileContainer }
+          currentUser={this.props.currentUser}
+          />
 
-        <Route exact
-               path='/view_itineraries'
-               render={() => <ItineraryWrapper itineraries={this.props.itineraries}/>}
-               />
-        <Route path='/view_itineraries/:id'
-               render={({match}) => <SingleItineraryContainer match={match} /> }
-               />
-        <Route path='/add_itinerary'  component={ AddItineraryContainer } />
-        <Route path='/login'  component={ LoginContainer } />
+        <PrivateRoute exact path='/view_itineraries'
+          currentUser={ this.props.currentUser }
+          itineraries={this.props.itineraries}
+          component={ ItineraryWrapper }
+          />
+
+        <PrivateRoute exact path='/view_itineraries/:id'
+          currentUser={ this.props.currentUser }
+          component={ SingleItineraryContainer }
+          />
+
+        <PrivateRoute exact path='/add_itinerary'
+          currentUser={ this.props.currentUser }
+          component={ AddItineraryContainer }
+          />
+
+        <Route exact path='/login'  component={ LoginContainer } />
         <Route path='/register'  component={ NewUserContainer } />
 
       </div>
     );
   }
 }
-
-
-// Google Places Autocomplete URL:
-// https://maps.googleapis.com/maps/api/place/autocomplete/json?input=[ *** whatever input here *** ]&types=geocode&key=AIzaSyALUflE7VDZS-iVv5V0tOq2UnsuCRpI2jY

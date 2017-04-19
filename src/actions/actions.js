@@ -15,9 +15,14 @@ export const logOut = () => {
 }
 
 export const addItinerary = (itinerary) => {
-  console.log("inside action");
   return {
     type: 'ADD_ITINERARY',
+    itinerary
+  }
+}
+export const retrieveItineraries = (itinerary) => {
+  return {
+    type: 'RETRIEVE',
     itinerary
   }
 }

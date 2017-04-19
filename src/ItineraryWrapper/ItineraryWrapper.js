@@ -1,30 +1,31 @@
 import React from 'react';
 import { Link }             from 'react-router-dom';
+import './ItineraryWrapper.css'
+
 
 
 const displayItineraries = (itineraries) =>{
 
   return itineraries.map((itinerary, i) => {
     return (
-      <div className="single-destination" key={i}>
-        <p>{itinerary.title}</p>
-        <p>{itinerary.description}</p>
-        <Link to={`/view_itineraries/${itinerary.id}`}>read more</Link>
+      <div className='view-wrapper' key={i}>
+        <img className='view-img' src={require('../../images/profile-placeholder.jpg')}/>        <p className='view-title'>{itinerary.title}</p>
+        <p className='view-description'>{itinerary.description}</p>
+        <Link className="read-more" to={`/view_itineraries/${itinerary.id}`}>read more</Link>
       </div>
     )
   })
 }
 
-const ItineraryWrapper = ({itineraries}) => {
-
-  if (itineraries.length) {
+const ItineraryWrapper = (props) => {
+  if (props.itineraries.length) {
     return (
-      <div>
-        {displayItineraries(itineraries)}
+      <div className="itinerary-wrapper-view">
+        {displayItineraries(props.itineraries)}
       </div>
     )
   } else {
-    return <div>There are no itineraries to view.</div>
+    return <div className='no-itineraries'>There are no itineraries to view.</div>
   }
 }
 

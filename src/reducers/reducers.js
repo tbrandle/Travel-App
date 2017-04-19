@@ -14,19 +14,10 @@ export const currentUser = (state = {}, action) => {
 export const itineraries = (state = [], action) => {
   switch(action.type){
     case 'ADD_ITINERARY':
+      return [action.itinerary];
+    case 'RETRIEVE':
       return [...state, action.itinerary];
     default:
       return state;
   }
 }
-
-
-
-
-
-// const marker = [{
-//   position: {
-//     lat: 39.753222,
-//     lng: -104.987797
-//   }
-// }]

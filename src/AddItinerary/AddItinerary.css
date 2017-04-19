@@ -40,8 +40,8 @@
 
 .save-btn {
   position: fixed;
-bottom: 0px;
-right: 0px;
+  bottom: 0px;
+  right: 0px;
 }
 .single-destination{
   display: flex;
@@ -56,7 +56,8 @@ right: 0px;
   padding: 4px 14px;
 }
 
-.input{
+.input,
+.geosuggest__input{
   display: block;
   margin: 9px auto;
   padding: 7px;
@@ -77,7 +78,7 @@ right: 0px;
   font-size: 15px
 }
 
-.ok-submit {
+.add-btn {
   width: 42px;
   position: absolute;
   top: 2px;
@@ -92,4 +93,9 @@ right: 0px;
   margin: 6px;
   align-content: center;
   border-radius: 6px 6px;
+}
+
+/******** google places style ********/
+.geosuggest_input{
+
 }
