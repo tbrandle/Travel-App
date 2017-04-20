@@ -56,7 +56,7 @@ export default class AddItinerary extends Component{
   renderDestinations(){
     return this.state.destinations.map((obj, i) => {
       return (
-          <div className="single-destination" >
+          <div className="single-destination" key={i}>
             <p className="place">{obj.place}</p>
             <p>{obj.placeDescription}</p>
             <input type="image"

@@ -1,10 +1,14 @@
 .login-wrapper {
-  display        : flex;
-  min-width      : 306px;
-  max-width      : 40%;
-  height         : 317px;
-  margin         : 67px auto;
-  padding        : 20px;
-  border         : 2px #005fa0 solid;
-  flex-direction : column;
+  display               : flex;
+  box-sizing            : border-box;
+  -webkit-box-direction : normal;
+  -webkit-box-orient    : vertical;
+  min-width             : 306px;
+  max-width             : 92%;
+  height                : 375px;
+  margin                : 67px auto;
+  padding               : 20px;
+  border                : 15px #005fa0 solid;
+  -ms-flex-direction    : column;
+  flex-direction        : column;
 }

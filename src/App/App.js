@@ -23,13 +23,6 @@ export default class App extends Component {
         console.log("The read failed: " + errorObject.code);
       });
   }
-  //
-  // componentWillReceiveProps(nextProps){
-  //   const updatedUser = nextProps.currentUser
-  //   const uid = updatedUser.uid
-  //   database.ref('users').update({[uid]:updatedUser})
-  //
-  // }
 
   signOut(){
     auth.signOut().then(function() {
