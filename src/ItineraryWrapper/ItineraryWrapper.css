@@ -42,3 +42,10 @@
   width    : 20px;
   float    : right;
 }
+
+.no-itineraries{
+  text-align: center;
+    border: 2px #1eb4f0 solid;
+    height: 100vh;
+    padding: 55px 0;
+}

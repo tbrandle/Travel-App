@@ -19,6 +19,7 @@ export const addItinerary = (itinerary) => {
   }
 }
 export const retrieveItineraries = (itinerary) => {
+  console.log(itinerary);
   return {
     type: 'RETRIEVE',
     itinerary
