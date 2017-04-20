@@ -34,3 +34,11 @@
   color           : grey;
   text-decoration : none;
 }
+
+.single-likes-wrapper{
+  position: relative;
+    width: 20px;
+    float: right;
+    right: 25px;
+    top: 27px;
+}
