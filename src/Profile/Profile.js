@@ -41,13 +41,13 @@ export default class Profile extends Component {
   render(){
     return (
       <div>
+        <div className="likes-wrapper profile-likes-wrapper">
+          <img className="heart-img" src={(require('../../images/heart.svg'))} />
+          <p className="likes">+{this.state.totalLikes}</p>
+        </div>
         <div className="pic-wrapper">
-          <img className="profile-pic" src={this.props.currentUser.photo || require('../../images/profile-placeholder.jpg')} />
+          <img className="profile-pic" src={this.props.currentUser.photo || require('../../images/profile-circle.png')} />
           <p className="user-name">{this.props.currentUser.name}</p>
-          <div className="likes-wrapper">
-            <img className="heart-img" src={(require('../../images/heart.svg'))} />
-            <p className="likes">+{this.state.totalLikes}</p>
-          </div>
         </div>
         <div className="btn-wrapper">
           <button className="profile-btn my-itineraries" onClick={()=> this.setState({render:'itineraries'})}>My Itineraries</button>
