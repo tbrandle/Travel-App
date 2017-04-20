@@ -16,12 +16,12 @@ import { database, auth } from '../database';
 export default class App extends Component {
 
   componentDidMount(){
-      database.ref('itineraries').on("value", (snapshot) => {
-        const itineraries = snapshot.val()
-        Object.keys(itineraries).map(key => this.props.retrieveItineraries(itineraries[key]));
-      }, function (errorObject) {
-        console.log("The read failed: " + errorObject.code);
-      });
+    database.ref('itineraries').on("value", (snapshot) => {
+      const itineraries = snapshot.val()
+      Object.keys(itineraries).map(key => this.props.retrieveItineraries(itineraries[key]));
+    }, function (errorObject) {
+      console.log("The read failed: " + errorObject.code);
+    });
   }
 
   signOut(){
