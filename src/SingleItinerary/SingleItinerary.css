@@ -1,3 +1,7 @@
+.single-component-wrapper{
+  background-color: rgba(74,144,226,.1)
+}
+
 .single-map-container {
   position : relative;
   width    : 100%;
@@ -5,10 +9,14 @@
   margin   : auto;
 }
 
-.title-card {
-  display          : flex;
+.single-details-container{
   position         : relative;
   top              : -52px;
+
+}
+
+.title-card {
+  display          : flex;
   width            : 69%;
   height           : 100%;
   margin           : auto;
@@ -37,6 +45,7 @@
 .btn-wrapper {
   display         : flex;
   justify-content : space-around;
+  margin: 22px 0;
 }
 
 .likes {
@@ -54,4 +63,7 @@
 
 .render-destination-wrapper {
   padding : 0 16px;
-}
+  background-color: white;
+  margin: 0 13px;
+    border: 1px lightgrey solid;
+  }
