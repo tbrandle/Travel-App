@@ -27,7 +27,6 @@ export default class AddItinerary extends Component{
 
   googlePlacesMarker(marker){
     const place = marker.label.split(',')[0]
-    console.log(place);
     let { lat, lng } = marker.location
     const newMarker = {
       position: {
@@ -47,15 +46,15 @@ export default class AddItinerary extends Component{
         lng
       }
     }
-    this.setState({ markers: [ newMarker] })
+    this.setState({ markers: [ newMarker], place: ''})
   }
 
   addMarker(marker){
     console.log(marker);
-    if (marker.location.lat) {
-      this.googlePlacesMarker(marker)
-    } else {
+    if (marker.latLng) {
       this.mapClickMarker(marker)
+    } else {
+      this.googlePlacesMarker(marker)
     }
   }
 
