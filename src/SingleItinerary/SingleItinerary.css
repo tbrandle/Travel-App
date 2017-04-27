@@ -1,5 +1,5 @@
-.single-component-wrapper{
-  background-color: rgba(74,144,226,.1)
+.single-component-wrapper {
+  background-color : rgba(74,144,226,.1);
 }
 
 .single-map-container {
@@ -9,10 +9,9 @@
   margin   : auto;
 }
 
-.single-details-container{
-  position         : relative;
-  top              : -52px;
-
+.single-details-container {
+  position : relative;
+  top      : -52px;
 }
 
 .title-card {
@@ -44,8 +43,8 @@
 
 .btn-wrapper {
   display         : flex;
+  margin          : 22px 0;
   justify-content : space-around;
-  margin: 22px 0;
 }
 
 .likes {
@@ -58,12 +57,12 @@
 
 .likes-wrapper {
   position : relative;
-  width: 17px;
+  width    : 17px;
 }
 
 .render-destination-wrapper {
-  padding : 0 16px;
-  background-color: white;
-  margin: 0 13px;
-    border: 1px lightgrey solid;
-  }
+  margin           : 0 13px;
+  padding          : 0 16px;
+  border           : 1px lightgrey solid;
+  background-color : white;
+}

@@ -26,13 +26,26 @@ export default class AddItinerary extends Component{
   }
 
   addMarker(marker){
-    const newMarker = {
+    if (marker.lat) {
+      let { lat, lng } = marker
+      const newMarker = {
         position: {
-          lat: marker.latLng.lat(),
-          lng: marker.latLng.lng()
+          lat,
+          lng
         }
       }
-    this.setState({ markers: [ newMarker] })
+      this.setState({ markers: [ newMarker] })
+    } else {
+      let lat = marker.latLng.lat()
+      let lng = marker.latLng.lng()
+      const newMarker = {
+        position: {
+          lat,
+          lng
+        }
+      }
+      this.setState({ markers: [ newMarker] })
+    }
   }
 
   addDestinationFields(){
@@ -106,7 +119,10 @@ export default class AddItinerary extends Component{
 
            <input type="file" className="filebtn" onChange={(e)=> this.uploadFile(e)}/>
 
-           <Geosuggest onSuggestSelect={suggest=> console.log(suggest)}/>
+           <Geosuggest
+             onSuggestSelect={suggest=> this.addMarker(suggest.location)}
+             suggestItemActiveClassName={'btn'}
+             />
            <section className="destination-wrapper">
                <div className='add-map-container'>
                 <GoogleInitialMap containerElement={ <div style={{ height: "100%"}}/> }
