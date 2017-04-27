@@ -15,7 +15,7 @@ export default class NewUser extends Component {
 
   newRegister () {
     const { history } = this.props
-    const { userEmail, password, name } = this.state
+    const { userEmail, password } = this.state
     const updateErrorInState = (errorMessage) => { this.setState({ error: errorMessage }) }
 
     auth.createUserWithEmailAndPassword(userEmail, password)
@@ -41,10 +41,9 @@ export default class NewUser extends Component {
 
       })
       .catch(function(error) {
-        const errorCode = error.code;
         const errorMessage = error.message;
         updateErrorInState(errorMessage)
-        // need to display the errorMessage
+        console.log(error.code);
       });
   }
 
