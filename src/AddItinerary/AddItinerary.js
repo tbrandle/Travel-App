@@ -25,28 +25,40 @@ export default class AddItinerary extends Component{
     this.setState({ uid: this.props.currentUser.uid })
   }
 
+  googlePlacesMarker(marker){
+    const place = marker.label.split(',')[0]
+    console.log(place);
+    let { lat, lng } = marker.location
+    const newMarker = {
+      position: {
+        lat,
+        lng
+      }
+    }
+    this.setState({ markers: [ newMarker], place })
+  }
+
+  mapClickMarker(marker){
+    let lat = marker.latLng.lat()
+    let lng = marker.latLng.lng()
+    const newMarker = {
+      position: {
+        lat,
+        lng
+      }
+    }
+    this.setState({ markers: [ newMarker] })
+  }
+
   addMarker(marker){
-    if (marker.lat) {
-      let { lat, lng } = marker
-      const newMarker = {
-        position: {
-          lat,
-          lng
-        }
-      }
-      this.setState({ markers: [ newMarker] })
+    console.log(marker);
+    if (marker.location.lat) {
+      this.googlePlacesMarker(marker)
     } else {
-      let lat = marker.latLng.lat()
-      let lng = marker.latLng.lng()
-      const newMarker = {
-        position: {
-          lat,
-          lng
-        }
-      }
-      this.setState({ markers: [ newMarker] })
+      this.mapClickMarker(marker)
     }
   }
+
 
   addDestinationFields(){
     this.state.markers.length && this.setState({ display: 'flex' })
@@ -120,7 +132,7 @@ export default class AddItinerary extends Component{
            <input type="file" className="filebtn" onChange={(e)=> this.uploadFile(e)}/>
 
            <Geosuggest
-             onSuggestSelect={suggest=> this.addMarker(suggest.location)}
+             onSuggestSelect={suggest=> this.addMarker(suggest)}
              suggestItemActiveClassName={'btn'}
              />
            <section className="destination-wrapper">
