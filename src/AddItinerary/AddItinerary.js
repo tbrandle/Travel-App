@@ -68,6 +68,7 @@ export default class AddItinerary extends Component{
     if (this.state.place && this.state.placeDescription) {
       this.setState({ destinations: [...destinations, { place, placeDescription, markers }] })
       this.setState({ place:"", placeDescription:"", markers: [], display: 'none' })
+      this._geoSuggest.clear()
     }
   }
 
@@ -131,6 +132,7 @@ export default class AddItinerary extends Component{
            <input type="file" className="filebtn" onChange={(e)=> this.uploadFile(e)}/>
 
            <Geosuggest
+             ref={el=>this._geoSuggest=el}
              onSuggestSelect={suggest=> this.addMarker(suggest)}
              suggestItemActiveClassName={'btn'}
              />

@@ -130,3 +130,8 @@ padding: 7px;
   overflow: hidden;
   border-width: 0;
 }
+
+.geosuggest__item--active {
+  background: #267dc0;
+  color: #fff;
+}
