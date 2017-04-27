@@ -15,7 +15,7 @@ export default class SingleItinerary extends Component {
 
   componentDidMount(){
     const { match, itineraries } = this.props
-    const id = parseInt(match.params.id)
+    const id = parseInt(match.params.id, 10)
     const itinerary = itineraries.find(obj => obj.id === id)
     if (!itinerary.likes) {
       itinerary['likes'] = 0
@@ -71,12 +71,12 @@ export default class SingleItinerary extends Component {
             <div className="title-card">
               <p className='itinerary-title'>{itinerary.title}</p>
               <div className="likes-wrapper">
-                <img className="heart-img" src={(require('../../images/heart.svg'))} />
+                <img className="heart-img" src={(require('../../images/heart.svg'))} alt="Likes"/>
                 <p className="likes">+{itinerary.likes}</p>
               </div>
               <p className='itinerary-description'>{itinerary.description}</p>
             </div>
-            <div className="btn-wrapper">
+            <div className="single-btn-wrapper">
               <button className="btn" onClick={() => this.addLike(itinerary)}>like</button>
               <button className="btn" onClick={() => this.handleWishListClick(id) }>add to wish list</button>
             </div>

@@ -42,11 +42,11 @@ export default class Profile extends Component {
     return (
       <div>
         <div className="pic-wrapper">
-          <img className="profile-pic" src={this.props.currentUser.photo || require('../../images/profile-circle.png')} />
+          <img className="profile-pic" src={this.props.currentUser.photo || require('../../images/profile-circle.png')} alt="Profile" />
           <div>
             <p className="user-name">{this.props.currentUser.name}</p>
             <div className="likes-wrapper profile-likes-wrapper">
-              <img className="heart-img" src={(require('../../images/heart.svg'))} />
+              <img className="heart-img" src={(require('../../images/heart.svg'))} alt="Likes"/>
               <p className="likes">+{this.state.totalLikes}</p>
             </div>
           </div>

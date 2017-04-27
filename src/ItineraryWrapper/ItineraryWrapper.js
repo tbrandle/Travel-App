@@ -11,7 +11,7 @@ const displayItineraries = (itineraries) =>{
       <div className='view-wrapper' key={i}>
         <div className='view-img'></div>
           <div className="likes-wrapper single-likes-wrapper">
-            <img className="heart-img" src={(require('../../images/heart.svg'))} />
+            <img className="heart-img" src={(require('../../images/heart.svg'))} alt="Likes"/>
             <p className="likes">+{itinerary.likes}</p>
           </div>
         <p className='view-title'>{itinerary.title}</p>

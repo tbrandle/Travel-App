@@ -41,7 +41,7 @@
   height : 20px;
 }
 
-.btn-wrapper {
+.single-btn-wrapper {
   display         : flex;
   margin          : 22px 0;
   justify-content : space-around;
