@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Link, Redirect } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 
 import './App.css';
 import LoginContainer from '../Login/LoginContainer';
@@ -16,12 +16,12 @@ import { database, auth } from '../database';
 export default class App extends Component {
 
   componentDidMount(){
-      database.ref('itineraries').on("value", (snapshot) => {
-        const itineraries = snapshot.val()
-        Object.keys(itineraries).map(key => this.props.retrieveItineraries(itineraries[key]));
-      }, function (errorObject) {
-        console.log("The read failed: " + errorObject.code);
-      });
+    database.ref('itineraries').on("value", (snapshot) => {
+      const itineraries = snapshot.val()
+      Object.keys(itineraries).map(key => this.props.retrieveItineraries(itineraries[key]));
+    }, function (errorObject) {
+      console.log("The read failed: " + errorObject.code);
+    });
   }
 
   signOut(){
@@ -30,7 +30,6 @@ export default class App extends Component {
     }, function(error) {
       console.error('Sign Out Error', error);
     });
-
     this.props.logOut()
   }
 

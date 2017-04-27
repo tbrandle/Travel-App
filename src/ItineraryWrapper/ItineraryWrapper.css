@@ -34,3 +34,18 @@
   color           : grey;
   text-decoration : none;
 }
+
+.single-likes-wrapper {
+  position : relative;
+  top      : 27px;
+  right    : 25px;
+  width    : 20px;
+  float    : right;
+}
+
+.no-itineraries{
+  text-align: center;
+    border: 2px #1eb4f0 solid;
+    height: 100vh;
+    padding: 55px 0;
+}

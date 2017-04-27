@@ -1,6 +1,5 @@
 import React from 'react';
 import { render } from 'react-dom';
-import database from './database';
 
 /******** redux ********/
 import { createStore, combineReducers, applyMiddleware } from 'redux';

@@ -1,3 +1,7 @@
+.single-component-wrapper {
+  background-color : rgba(74,144,226,.1);
+}
+
 .single-map-container {
   position : relative;
   width    : 100%;
@@ -5,13 +9,17 @@
   margin   : auto;
 }
 
+.single-details-container {
+  position : relative;
+  top      : -52px;
+}
+
 .title-card {
   display          : flex;
-  position         : relative;
-  top              : -52px;
-  width            : 69%;
-  height           : 115px;
+  width            : 72%;
+  height           : 100%;
   margin           : auto;
+  padding          : 0 9px 9px;
   border           : 1px grey solid;
   background-color : white;
   box-shadow       : 0px 0px 6px grey;
@@ -20,35 +28,42 @@
 
 .itinerary-title {
   margin      : 4px;
+  text-align  : center;
   font-size   : 24px;
   font-weight : 700;
 }
 
 .itinerary-description {
-  margin : 0;
+  margin      : 0;
+  text-align  : center;
 }
 
 .heart-img {
   height : 20px;
 }
 
-.btn-wrapper {
+.single-btn-wrapper {
   display         : flex;
+  margin          : 22px 0;
   justify-content : space-around;
 }
 
 .likes {
   position : absolute;
   top      : -3px;
-  right    : -15px;
+  right    : -22px;
   margin   : 0;
   color    : grey;
 }
 
 .likes-wrapper {
   position : relative;
+  width    : 17px;
 }
 
 .render-destination-wrapper {
-  padding : 0 16px;
+  margin           : 0 13px;
+  padding          : 0 16px;
+  border           : 1px lightgrey solid;
+  background-color : white;
 }

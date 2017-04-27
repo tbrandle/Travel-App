@@ -25,15 +25,39 @@ export default class AddItinerary extends Component{
     this.setState({ uid: this.props.currentUser.uid })
   }
 
-  addMarker(marker){
+  googlePlacesMarker(marker){
+    const place = marker.label.split(',')[0]
+    let { lat, lng } = marker.location
     const newMarker = {
-        position: {
-          lat: marker.latLng.lat(),
-          lng: marker.latLng.lng()
-        }
+      position: {
+        lat,
+        lng
       }
-    this.setState({ markers: [ newMarker] })
+    }
+    this.setState({ markers: [ newMarker], place })
   }
+
+  mapClickMarker(marker){
+    let lat = marker.latLng.lat()
+    let lng = marker.latLng.lng()
+    const newMarker = {
+      position: {
+        lat,
+        lng
+      }
+    }
+    this.setState({ markers: [ newMarker], place: ''})
+  }
+
+  addMarker(marker){
+    console.log(marker);
+    if (marker.latLng) {
+      this.mapClickMarker(marker)
+    } else {
+      this.googlePlacesMarker(marker)
+    }
+  }
+
 
   addDestinationFields(){
     this.state.markers.length && this.setState({ display: 'flex' })
@@ -44,6 +68,7 @@ export default class AddItinerary extends Component{
     if (this.state.place && this.state.placeDescription) {
       this.setState({ destinations: [...destinations, { place, placeDescription, markers }] })
       this.setState({ place:"", placeDescription:"", markers: [], display: 'none' })
+      this._geoSuggest.clear()
     }
   }
 
@@ -106,7 +131,11 @@ export default class AddItinerary extends Component{
 
            <input type="file" className="filebtn" onChange={(e)=> this.uploadFile(e)}/>
 
-           <Geosuggest onSuggestSelect={suggest=> console.log(suggest)}/>
+           <Geosuggest
+             ref={el=>this._geoSuggest=el}
+             onSuggestSelect={suggest=> this.addMarker(suggest)}
+             suggestItemActiveClassName={'btn'}
+             />
            <section className="destination-wrapper">
                <div className='add-map-container'>
                 <GoogleInitialMap containerElement={ <div style={{ height: "100%"}}/> }

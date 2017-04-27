@@ -32,7 +32,7 @@ export default class Login extends Component {
     const setErrorState = (error) => this.setState({ error })
     auth.signInWithEmailAndPassword(email, password)
       .then(user => {
-        const { uid, email } = user
+        const { uid } = user
         this.getFirebaseUserObject(uid)
         history.push('/')
       })

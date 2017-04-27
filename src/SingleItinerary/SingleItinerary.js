@@ -15,7 +15,7 @@ export default class SingleItinerary extends Component {
 
   componentDidMount(){
     const { match, itineraries } = this.props
-    const id = parseInt(match.params.id)
+    const id = parseInt(match.params.id, 10)
     const itinerary = itineraries.find(obj => obj.id === id)
     if (!itinerary.likes) {
       itinerary['likes'] = 0
@@ -60,28 +60,30 @@ export default class SingleItinerary extends Component {
     const { itinerary, itinerary:{destinations}, itinerary:{id} } = this.state
     if (destinations) {
        return (
-        <div>
-          <div className='single-map-container'>
+        <div className="single-component-wrapper">
+          <section className='single-map-container'>
             <GoogleInitialMap containerElement={ <div style={{ height: "100%"}}/> }
               mapElement={ <div style={{ height: "100%"}}/> }
               destinations={destinations}
               />
-          </div>
-          <div className="title-card">
-            <p className='itinerary-title'>{itinerary.title}</p>
-            <div className="likes-wrapper">
-              <img className="heart-img" src={(require('../../images/heart.svg'))} />
-              <p className="likes">+{itinerary.likes}</p>
+          </section>
+          <section className="single-details-container">
+            <div className="title-card">
+              <p className='itinerary-title'>{itinerary.title}</p>
+              <div className="likes-wrapper">
+                <img className="heart-img" src={(require('../../images/heart.svg'))} alt="Likes"/>
+                <p className="likes">+{itinerary.likes}</p>
+              </div>
+              <p className='itinerary-description'>{itinerary.description}</p>
             </div>
-            <p className='itinerary-description'>{itinerary.description}</p>
-          </div>
-          <div className="btn-wrapper">
-            <button className="btn" onClick={() => this.addLike(itinerary)}>like</button>
-            <button className="btn" onClick={() => this.handleWishListClick(id) }>add to wish list</button>
-          </div>
-          <div className="render-destination-wrapper">
-            { this.renderDestinations(itinerary.destinations) }
-          </div>
+            <div className="single-btn-wrapper">
+              <button className="btn" onClick={() => this.addLike(itinerary)}>like</button>
+              <button className="btn" onClick={() => this.handleWishListClick(id) }>add to wish list</button>
+            </div>
+            <div className="render-destination-wrapper">
+              { this.renderDestinations(itinerary.destinations) }
+            </div>
+          </section>
         </div>
       )
     } else {
