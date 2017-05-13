@@ -100,7 +100,11 @@ export default class AddItinerary extends Component{
 
   saveItinerary(){
     this.props.addItinerary(this.state)
-    database.ref('itineraries').push().set(this.state)
+
+    // use update instead so I don't get a unique key set as the key in object
+    // set the itinerary with the id as the key
+    const { id } = this.state
+    database.ref('itineraries').update({ [id]: this.state })
     this.setState({
       id: Date.now(),
       title:'',
