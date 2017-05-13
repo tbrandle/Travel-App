@@ -50,14 +50,12 @@ export default class AddItinerary extends Component{
   }
 
   addMarker(marker){
-    console.log(marker);
     if (marker.latLng) {
       this.mapClickMarker(marker)
     } else {
       this.googlePlacesMarker(marker)
     }
   }
-
 
   addDestinationFields(){
     this.state.markers.length && this.setState({ display: 'flex' })
@@ -100,7 +98,8 @@ export default class AddItinerary extends Component{
 
   saveItinerary(){
     this.props.addItinerary(this.state)
-    database.ref('itineraries').push().set(this.state)
+    const { id } = this.state
+    database.ref('itineraries').update({ [id]: this.state })
     this.setState({
       id: Date.now(),
       title:'',

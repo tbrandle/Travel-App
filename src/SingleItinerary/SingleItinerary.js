@@ -54,6 +54,8 @@ export default class SingleItinerary extends Component {
     this.setState({likes:newLikes});
     itineraries.splice(index, 1, itinerary)
     this.props.updateItinerary(itineraries)
+    database.ref('itineraries').update({[itinerary.id]:itinerary})
+
   }
 
   render(){
