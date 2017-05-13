@@ -3,9 +3,14 @@ import { Link }             from 'react-router-dom';
 import './ItineraryWrapper.css'
 
 
+const removeDuplicates = (itineraries) => {
+  return itineraries.reduce((array, itinerary) => {
+    !array.includes(itinerary.id)
+  },[])
+
+}
 
 const displayItineraries = (itineraries) =>{
-
   return itineraries.map((itinerary, i) => {
     return (
       <div className='view-wrapper' key={i}>

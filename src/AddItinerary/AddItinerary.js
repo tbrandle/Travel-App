@@ -50,14 +50,12 @@ export default class AddItinerary extends Component{
   }
 
   addMarker(marker){
-    console.log(marker);
     if (marker.latLng) {
       this.mapClickMarker(marker)
     } else {
       this.googlePlacesMarker(marker)
     }
   }
-
 
   addDestinationFields(){
     this.state.markers.length && this.setState({ display: 'flex' })
@@ -100,9 +98,6 @@ export default class AddItinerary extends Component{
 
   saveItinerary(){
     this.props.addItinerary(this.state)
-
-    // use update instead so I don't get a unique key set as the key in object
-    // set the itinerary with the id as the key
     const { id } = this.state
     database.ref('itineraries').update({ [id]: this.state })
     this.setState({

@@ -4,7 +4,6 @@ export const currentUser = (state = {}, action) => {
   switch(action.type){
     case 'LOG_IN':
       return action.user
-      // Object.assign({}, state, action.user );
     case 'LOG_OUT':
       return {};
     case 'UPDATE_USER':

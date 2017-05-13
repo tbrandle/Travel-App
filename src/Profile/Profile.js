@@ -44,7 +44,7 @@ export default class Profile extends Component {
         <div className="pic-wrapper">
 
           <img className="profile-pic" src={this.props.currentUser.photo || require('../../images/profile-circle.png')} alt="Profile" />
-          <div>
+          <div className="user-name-wrapper">
             <p className="user-name">{this.props.currentUser.name}</p>
             <div className="likes-wrapper profile-likes-wrapper">
               <img className="heart-img" src={(require('../../images/heart.svg'))} alt="Likes"/>
