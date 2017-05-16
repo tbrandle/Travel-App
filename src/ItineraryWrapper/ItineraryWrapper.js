@@ -4,14 +4,20 @@ import './ItineraryWrapper.css'
 
 
 const removeDuplicates = (itineraries) => {
-  return itineraries.reduce((array, itinerary) => {
-    !array.includes(itinerary.id)
+  let results = []
+  itineraries.reduce((array, itinerary) => {
+    const { id } = itinerary
+    if (!array[id]) {
+      array[id] = 1
+      results.push(itinerary)
+    }
+    return array
   },[])
-
+  return results
 }
 
 const displayItineraries = (itineraries) =>{
-  return itineraries.map((itinerary, i) => {
+  return removeDuplicates(itineraries).map((itinerary, i) => {
     return (
       <div className='view-wrapper' key={i}>
         <div className='view-img'></div>
