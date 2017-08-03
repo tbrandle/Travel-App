@@ -50,7 +50,7 @@ export default class NewUser extends Component {
   render(){
     return (
       <div className='login-wrapper'>
-        <h1 className="logo">TravelMe</h1>
+        <h1 className="logo">TravelDen</h1>
 
         <input className='input' placeholder="name" type="text" onChange={(e)=> this.setState({name: e.target.value})} value={ this.state.name } />
         <input className='input' placeholder="email" type="text" onChange={(e)=> this.setState({userEmail: e.target.value})} value={ this.state.userEmail } />

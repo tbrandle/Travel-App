@@ -58,7 +58,7 @@ export default class Login extends Component {
     return (
       <div className="login-wrapper">
         { this.redirect() }
-        <h1 className="logo">TravelMe</h1>
+        <h1 className="logo">TravelDen</h1>
         <input className="input"
                placeholder="email"
                name="email"
