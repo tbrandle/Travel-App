@@ -3,7 +3,7 @@
 TravelDen is short for Travel Denver and is designed for mobile. TravelDen is a way to share themed itineraries for people visiting Denver. A user can create an itinerary of activities they feel someone visiting (that has the same interests) must see. A visitor can log in, search different itineraries, like an itinerary, and favorite an itinerary. 
 
 ## Project Status
-This project is currently in development. There is working functionality of user sign in, adding/viewing itineraries, liking and favoriting. Currently working on building an express backend with JSON Webtokens for login. Once this is built out, I will deploy the app to Heroku.
+This project is currently in development. There is working functionality of user sign in, adding/viewing itineraries, liking and favoriting. Currently working on building app in React Native. This will be deployed on firebase when ready.
 
 ## Demo
 [View Demo](https://drive.google.com/file/d/0B01GfirTpVyLOXIyLU1jZmRJSHc/view)
